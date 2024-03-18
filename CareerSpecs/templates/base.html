@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Site Metas -->
+<title>Career Specs</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Site Icons -->
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+<link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<!-- Site CSS -->
+<!-- ALL VERSION CSS -->
+<link rel="stylesheet" href="{% static 'css/versions.css' %}">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!-- Modernizer for Portfolio -->
+<script src="{% static 'js/modernizer.js' %}"></script>
+
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!-- Math Jax imp link for algebra front end.. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<body class="host_version">
+
+    <!-- Modal -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header tit-up">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Customer Login</h4>
+                </div>
+                <div class="modal-body customer-box">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs">
+                        <li><a class="active" href="#Login" data-toggle="tab">Login</a></li>
+                        <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Login">
+                            <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" id="email1" placeholder="Name" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" id="exampleInputPassword1" placeholder="Email" type="email">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+										Submit
+									</button>
+                                        <a class="for-pwd" href="javascript:;">Forgot your password?</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="Registration">
+                            <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" placeholder="Name" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" id="email" placeholder="Email" type="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" id="mobile" placeholder="Mobile" type="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" id="password" placeholder="Password" type="password">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <button type="button" class="btn btn-light btn-radius btn-brd grd1">
+										Save &amp; Continue
+									</button>
+                                        <button type="button" class="btn btn-light btn-radius btn-brd grd1">
+										Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOADER -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="progress-br float shadow">
+                <div class="progress__item"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END LOADER -->
+    <!-- Start header -->
+    <header class="top-navbar">
+        <div style="text-align: center;background-color:burlywood;">
+            <img src="../static/images/logopro.png" style="width: 40vw;" alt="" />
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light" style="padding: 0;justify-content: center;">
+            <div class="container-fluid" style="background-color: saddlebrown;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+				</button>
+                <div class="collapse navbar-collapse" id="navbars-host" style="display: flex;justify-content: space-between;">
+                    <ul class="navbar-nav" id="navbar-ul">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'course' %}">Course</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'college' %}">College</a></li>
+                        <div id="isLoggedIn">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'editprof' %}">My Profile</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'feedback' %}">FeedBack</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                        </div>
+                    </ul>
+                    <div id="isNotLoggedIn">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{% url 'terms' %}" class="hover-btn-new orange"><span>Give Exam</span></a></li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <li><a class="hover-btn-new log" href="{% url 'register' %}"><span>Register/Login</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End header -->
+    {% block content %} {% endblock %}
+    <!--Footer Section Starts-->
+    <footer class="footer" style="background-color: saddlebrown;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3 style="-webkit-text-fill-color:wheat;">Epitomize</h3>
+                        </div>
+                        <p style="-webkit-text-fill-color:snow;font-size:0.9em;">At career specs, we understand that choosing the right educational stream after 12th grade is a crucial decision in shaping your future. Our innovative system takes into account not just your academic result but also your intersts,skills
+                            and aspirations to guide you towards the most suitable career path. </p>
+                    </div>
+                    <!-- end clearfix -->
+                </div>
+                <!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3 style="-webkit-text-fill-color:wheat;">Social Media</h3>
+                        </div>
+                        <div>
+                            <ul class="footer-links-soi" style="display: flex;flex-direction: column;align-items: flex-start;">
+                                <li style="-webkit-text-fill-color:snow;"><a href="https://pin.it/6A86B2FZM " style="-webkit-text-fill-color:snow;"><i class="fa-solid fa-pinterest fa-brands fa-xl" ></i>Pinterest</a>
+                                </li>
+                                <li style="-webkit-text-fill-color: snow;"><a href="https://www.instagram.com/careerspecs?igsh=NDE4MDI4c3o0YWlt" style="-webkit-text-fill-color:snow;"><i class="fa-brands fa-instagram fa-xl" ></i>Instagram</a>
+                                </li>
+                                <li style="-webkit-text-fill-color:snow;"><a href="https://x.com/careerspecs06?t=6MwW4VQPBe1kpfkeq0jawA&s=09" style="-webkit-text-fill-color:snow;"><i class="fa-brands fa-twitter" ></i>Twitter</a>
+                                </li>
+                                <li style="-webkit-text-fill-color:snow;"><a href="https://www.facebook.com/careerspecs?mibextid=ZbWKwL" style="-webkit-text-fill-color:snow;"><i class="fa-brands fa-facebook fa-xl" ></i>Facebook</a>
+                                </li>
+                            </ul>
+                            <!-- end links -->
+                        </div>
+                    </div>
+                    <!-- end clearfix -->
+                </div>
+                <!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3 style="-webkit-text-fill-color:wheat;">Contact Details</h3>
+                        </div>
+                        <ul class="footer-links">
+                            <li style="-webkit-text-fill-color: snow;"><a href="mailto:CareerSpecs06@gmail.com">CareerSpecs06@gmail.com</a></li>
+                            <li style="-webkit-text-fill-color: snow;"><a href="#">www.CareerSpecs.com</a></li>
+                            <li style="-webkit-text-fill-color: snow;">+919426570429</li>
+                        </ul>
+                        <!-- end links -->
+                    </div>
+                    <!-- end clearfix -->
+                </div>
+                <!-- end col -->
+
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </footer>
+    <!-- end footer -->
+
+    <div class="copyrights" style="background-color:burlywood;">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">
+                    <p class="footer-company-name" style="-webkit-text-fill-color:maroon;"><b>All Rights Reserved. &copy; 2024 CareerSpecs</a> Design By : CareerSpecs</a></b></p>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end copyrights -->
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'js/all.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/timeline.min.js' %}"></script>
+    <!-- Imp script for register /login  and timlines is use here for HOW IT WORKS things...-->
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        if (getCookie("isLoggedIn") == "True") {
+            document.getElementById("isLoggedIn").style.display = "block"
+            document.getElementById("isNotLoggedIn").style.display = "none"
+        } else {
+            document.getElementById("isLoggedIn").style.display = "none"
+            document.getElementById("isNotLoggedIn").style.display = "block"
+        }
+        timeline(document.querySelectorAll('.timeline'), {
+            forceVerticalMode: 700,
+            mode: 'horizontal',
+            verticalStartPosition: 'left',
+            visibleItems: 4
+        });
+    </script>
+    <script>
+        url = window.location.href.replace(/^(?:\/\/|[^/]+)*\//, '').replace("/", "");
+        elements = document.getElementsByClassName("nav-item")
+        console.log(elements[0])
+        switch (url) {
+            case "home":
+                elements[0].classList.add("active")
+                break;
+            case "about":
+                elements[1].classList.add("active")
+                break;
+            case "contact":
+                elements[2].classList.add("active")
+                break;
+            case "course":
+                elements[3].classList.add("active")
+                break;
+            case "college":
+                elements[4].classList.add("active")
+                break;
+            case "editprof":
+                elements[5].classList.add("active")
+                break;
+            case "feedback":
+                elements[6].classList.add("active")
+                break;
+            case "logout":
+                elements[7].classList.add("active")
+                break;
+
+            default:
+                elements[0].classList.add("active")
+                break;
+        }
+        console.log(url)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- end section myprofile-->
+<style>
+    a.hover-btn-new.orange{
+        -webkit-text-fill-color: white !important;
+        border-radius: 1vw;
+    }
+    a.hover-btn-new.orange:hover {
+        background-color: white !important;
+        -webkit-text-fill-color: black !important;
+    }
+</style>
+<section class="contact_section layout_padding" style="
+    -webkit-text-fill-color:midnightblue;
+    font-size: 1.2em;
+    background-size:cover;
+    background-color:unset;
+    background-blend-mode: color-burn;
+    background-image: url('../static/images/prof3.jpg');
+    margin-top: 0px;">
+    <div class="container">
+        <div class="container-fluid">
+            <table class="table table-borderless text-light">
+                <form method="POST" action="" >
+                    {% csrf_token %}
+                    <tr style="display: flex;flex-wrap: wrap;width:fit-content">
+                        <th style="width: 10em;">Username:</th>
+                        <td style="display: flex;flex-wrap: wrap;">
+                            <input type="text" name="uName" value="{{uName}}" style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" readonly/>
+                        </td>
+                    </tr>
+                    <tr style="display: flex;flex-wrap: wrap;width:fit-content">
+                        <th style="width: 10em;">Email:</th>
+                        <td>
+                            <input type="email" name="uEmail" value="{{uEmail}}" style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" readonly/>
+                        </td>
+                    </tr>
+                    <tr style="display: flex;flex-wrap: wrap;width:fit-content">
+                        <th style="width: 10em;">Phone no:</th>
+                        <td>
+                            <input type="numbers" name="uPhone" value="{{uPhone}}" minlength="10" maxlength="10 " style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" readonly />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2 style="background: transparent; border-radius: 7px; ">{{info}} {{score}}</h2>
+                            <h1 style="background: transparent; border-radius: 7px;">Your Percentage: {{percentage}}%</h1>
+
+                        </td>
+                    </tr>
+                    <tr style="display: flex;flex-wrap: wrap;">
+                        <td>
+                            {% for i in subjects.items %}
+                            <h3 style="background: transparent; border-radius: 7px; ">{{i.0}} : {{i.1}}</h3>
+                            {% endfor %}
+                        </td>
+                    </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <a href="{% url 'myprof' %}" class="hover-btn-new orange" style="background-color: darkslategray;"><span style="color:darkgoldenrod">Edit Profile</span></a>
+                        </a>
+                    </td>
+                    <td> <br> <br></td>
+                </tr>
+                </form>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

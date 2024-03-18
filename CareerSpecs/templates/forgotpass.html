@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<!-- section -->
+<style>
+        #submit{
+            border: 2px solid sienna; 
+            background:darkslategray;
+            margin-top: 10px;
+            border-radius: 10px;
+            color: springgreen;width:100px;height: 40px;cursor: pointer;
+            transition: 0.3s linear;
+            font-weight: bold;
+        }
+        #submit:hover{
+            background-color: black;
+            -webkit-text-fill-color: wheat;
+        }
+</style>
+<div class="section layout_padding contact_section" style="background:#f6f6f6;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <div class="full float-right_img">
+                    <img src="{% static 'images/forgotpass.png' %}" alt="#" style="width:50vw">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="contact_form" style="background-color: white;border-radius: 25px;">
+                    <form action="" method="post" id="forgot-pass">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="full field" id="email-sec">
+                                <input type="email" id="email" placeholder="Your Email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required />
+                            </div>
+                            <div class="full field" id="otp-sec">
+                                <input type="numbers" placeholder="Enter OTP" name="OTP" required/>
+                            </div>
+                </div>
+                <div class="full-field">
+                    <div class="center"><button id="submit" type="submit">SUBMIT</button></div>
+                </div>
+                </fieldset>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    const OTP = urlParams.has('otp')
+    if (OTP) {
+        document.getElementById("email-sec").style.display = "none";
+        document.getElementById("otp-sec").style.display = "block";
+    } else {
+        document.getElementById("email-sec").style.display = "block";
+        document.getElementById("otp-sec").style.display = "none";
+    }
+</script>
+{% endblock %}
+<!-- end section -->

@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<!-- section -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Fetch scores from the HTML and calculate recommendation
+    let scores = [
+        {% for i in subjects.items %}
+        {"{{i.0}}" : "{{i.1}}"},
+        {% endfor %}
+    ];
+
+    // Add your recommendation logic here
+    const recommendedCourse = recommendCourse(scores);
+
+    // Display the recommended course
+    $('#recommended-course').text('Recommended Course: ' + recommendedCourse);
+})
+</script>
+<script src="{% static 'js/result.js' %} "></script>
+<div class="section layout_padding contact_section" style="background:white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <table>
+                    <tr>
+                        <td>
+                            <h2 style="background: transparent; border-radius: 7px; ">{{info}} {{score}}</h1>
+                        </td>
+                    </tr>
+                    <tr style="display: flex;flex-wrap: wrap;">
+                        <td>
+                            {% for i in subjects.items %}
+                            <h3 style="background: transparent; border-radius: 7px; ">{{i.0}} : {{i.1}}</h3>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <h1 style="background: transparent; border-radius: 7px;">Your Percentage: {{percentage}}%</h1>
+                    <h2 id="recommended-course" style="background: transparent; border-radius: 7px;">Recommended Course: {{recommendedCourse}}</h2>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

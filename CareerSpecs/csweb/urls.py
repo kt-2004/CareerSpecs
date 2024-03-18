@@ -1,0 +1,24 @@
+from django.urls import path
+from csweb import views
+urlpatterns = [
+    path('home/', views.home, name='home'),
+    path('', views.home, name=''),
+    path('about/',views.about,name='about'),
+    path('contact/',views.contact,name='contact'),
+    path('feedback/',views.feedback,name='feedback'),
+    path('forgotpass/',views.forgotpass,name='forgotpass'),
+    path('changepass/',views.changepass,name='changepass'),
+    path('myprof/',views.myprof,name='myprof'),
+    path('register/',views.register,name='register'),
+    path('logout/',views.logout,name='logout'),
+    path('fillform/',views.fillform,name='fillform'),
+    path('mcq/',views.mcq,name='mcq'),
+    path('add/',views.add_to_db,name='add'),
+    path('clg/',views.clg_to_db,name='clg'),
+    path('result/',views.result,name='result'),
+    path('terms/',views.terms,name='terms'),
+    path('streams/',views.stream_desc,name='streams'),
+    path('course/',views.course,name='course'),
+    path('college/',views.college,name='college'),
+    path('editprof/',views.editprof,name='editprof'),
+]    
