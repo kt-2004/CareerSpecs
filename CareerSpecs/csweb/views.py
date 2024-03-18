@@ -206,7 +206,7 @@ def fillform(request):
         return redirect("/register")
 
     if int(User.objects.get(uEmail=request.session["email"]).Student.score) != -1:
-        return redirect("/home")
+        return redirect("/terms?retake")#Can't give xam twice..
     isLoggedIn = request.COOKIES.get('isLoggedIn','False')
     if isLoggedIn=='True':
         if request.method == 'POST':
@@ -246,7 +246,8 @@ def mcq(request):
     if not get_referer(request):
         return redirect("/register")
     if int(User.objects.get(uEmail=request.session["email"]).Student.score) != -1:
-        return HttpResponse("<h1>Can't Give Exam Twice.</h1>")  #if score is not -1 then you cannot give xam.
+        return redirect("terms?retake") #if score is not -1 then you cannot give xam.
+        
     if request.method == 'POST':#updated
         pass
     elif 'questions' in list(request.session.keys()):#updated

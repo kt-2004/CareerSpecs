@@ -149,6 +149,7 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'editprof' %}">My Profile</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'feedback' %}">FeedBack</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'terms' %}">Give Exam</a></li>
                         </div>
                     </ul>
                     <div id="isNotLoggedIn">
@@ -295,10 +296,15 @@
             case "logout":
                 elements[7].classList.add("active")
                 break;
-
+            case "terms":
+                elements[8].classList.add("active")
+                break;
             default:
                 elements[0].classList.add("active")
                 break;
+        }
+        if(url.includes("retake")){
+            alert("Can't Give Exam Twice.Try With Another Account.")
         }
         console.log(url)
     </script>
