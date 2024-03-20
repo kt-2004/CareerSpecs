@@ -21,4 +21,5 @@ urlpatterns = [
     path('course/',views.course,name='course'),
     path('college/',views.college,name='college'),
     path('editprof/',views.editprof,name='editprof'),
+    path('rec/',views.reccourse,name='rec'),
 ]    

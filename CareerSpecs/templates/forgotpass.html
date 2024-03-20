@@ -6,7 +6,9 @@
             background:darkslategray;
             margin-top: 10px;
             border-radius: 10px;
-            color: springgreen;width:100px;height: 40px;cursor: pointer;
+            color: springgreen;
+            width:fit-content;
+            cursor: pointer;
             transition: 0.3s linear;
             font-weight: bold;
         }
@@ -29,34 +31,45 @@
                         {% csrf_token %}
                         <fieldset>
                             <div class="full field" id="email-sec">
-                                <input type="email" id="email" placeholder="Your Email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required />
-                            </div>
+                                <input type="email" id="email" placeholder="Your Email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required disabled />
+                            </div> 
                             <div class="full field" id="otp-sec">
-                                <input type="numbers" placeholder="Enter OTP" name="OTP" required/>
-                            </div>  
-                </div>
-                <div class="full-field">
-                    <div class="center"><button id="submit" type="submit">SUBMIT</button></div>
-                </div>
-            </fieldset>
-        </form>
+                                <input type="number" id="otp" placeholder="Enter OTP" name="OTP" required disabled/>
+                            </div> 
+                            <div class="full-field">
+                                <div class="center">
+                                 <input id="submit" type="submit"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form> 
+                </div> 
             </div>
         </div>
     </div>
 </div>
 </div>
 <script>
-    const queryString = window.location.search;
-    console.log(queryString);
-    const urlParams = new URLSearchParams(queryString);
-    const OTP = urlParams.has('otp')
-    if (OTP) {
-        document.getElementById("email-sec").style.display = "none";
-        document.getElementById("otp-sec").style.display = "block";
-    } else {
-        document.getElementById("email-sec").style.display = "block";
-        document.getElementById("otp-sec").style.display = "none";
-    }
+    window.onload = function() {
+        const queryString = window.location.search;
+        console.log(queryString);
+        const urlParams = new URLSearchParams(queryString);
+        const OTP = urlParams.has('otp')
+        console.log(OTP)
+        if (OTP) {
+            document.getElementById("email").disabled = true;
+            document.getElementById("otp").disabled = false;
+            document.getElementById("email").style.display = 'none';
+            document.getElementById("otp").style.display= 'block';
+            confirm.log("OTP exists")
+        } else {
+            document.getElementById("email").disabled = false;
+            document.getElementById("otp").disabled = true;
+            document.getElementById("email").style.display = 'block';
+            document.getElementById("otp").style.display= 'none';
+            console.log("no OTP")
+        }
+    };
 </script>
 {% endblock %}
 <!-- end section -->

@@ -14,6 +14,7 @@ import csv
 from django.db import connection
 from django.views.decorators.cache import never_cache
 from django.template import RequestContext
+import json
 
 
 #This function is made to curbe direct access of pages by the page names.i.e:/feedback etc.
@@ -48,17 +49,21 @@ def forgotpass(request):
     if not get_referer(request):
         return redirect("/register")
     if request.method == 'POST':
-        if not request.POST['OTP']:
-            email=request.POST.get('email')
-            print(email)
-            changepass.set_cookie("otp", SendEmail(email,request))
-            return changepass
-        else:
-            otp = request.POST.get("OTP")
-            if otp == request.COOKIES.get("otp"):#Compares otp got from user and stored in the cookie.
-                return redirect("changepass")
+        try:
+            if 'OTP' not in list(request.POST.keys()):
+                email=request.POST.get('email')
+                print(email)
+                request.session["otp"] =  SendEmail(email,request)
+                return changepass
             else:
-                return HttpResponse("<h1>Incorrect OTP.</h1>") #Msg
+                otp = request.POST.get("OTP")
+                if otp == request.session.get("otp"):#Compares otp got from user and stored in the cookie.
+                    return redirect("changepass")
+                else:
+                    return HttpResponse("<h1>Incorrect OTP.</h1>") #Msg
+        except Exception as e:
+            print(e)
+            print(request.POST.keys())
     return render(request,"forgotpass.html")
 def changepass(request):
     if not get_referer(request):
@@ -66,7 +71,10 @@ def changepass(request):
     if request.method=="POST":
         response=redirect("/?password_changed")#After changing password gets user to home page.
         uEmail = request.POST['uEmail']
-        response.set_cookie('username', User.objects.get(uEmail=uEmail).uName)#For getting username also in case of new or updated for name get from the cookie.
+        try:
+            response.set_cookie('username', User.objects.get(uEmail=uEmail).uName)#For getting username also in case of new or updated for name get from the cookie.
+        except:
+            return HttpResponse("Email does not exist")
         request.session["username"] = User.objects.get(uEmail=uEmail).uName
         uPass = request.POST['uPass']
         print(list(User.objects.all().values_list('uName', flat=True)))#for cmd
@@ -107,7 +115,7 @@ def myprof(request):
                 student = Student.objects.get(email=request.session["email"])
                 print("student found")
                 result = eval(str(student.result)) # eval function is used to represent the score of student .
-                response = render(request,"myprof.html",{'uName':prof.uName,'uEmail':prof.uEmail,'uPhone':prof.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2)})
+                response = render(request,"myprof.html",{'uName':prof.uName,'uEmail':prof.uEmail,'uPhone':prof.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"Courses":Student.recommended_course,"course":result,"inform":"Your Recommended Courses:","recommend":Student.recommended_course})
                 print("sending student...")
                 return response
             except:
@@ -400,7 +408,6 @@ def clg_to_db(request):
                             clg.courses.add(j.id)
                         clg.save()
     return HttpResponse("check console")
-
 def stream_desc(request):
     strup = """1. BCA
 Sub:Computer,English,Mathematics,Logical and Reasoning,Statistics,Ethical Hacking,Web Design,Computer Architecture,Cyber Security,Coding,Digital Arts,Leadership,Research and Obervation,Robotics & ML/AI,Animation
@@ -724,7 +731,6 @@ Sub:Mathematics,English,Computer,Fine Arts,Digital Arts,Travelling,Animation,Web
                 except:
                     print(f"Error {e} while updating " + stuff[0])
     return HttpResponse("Check Console")
-
 def handler404(request, exception):
     return render(request, '404.html', status=404)
 #In this function user can only see their profile can't edit....
@@ -747,7 +753,7 @@ def editprof(request):
                 student = Student.objects.get(email=request.session["email"])
                 print("student found")
                 result = eval(str(student.result)) # eval function is used to represent the score of student .
-                response = render(request,"editprof.html",{'uName':edp.uName,'uEmail':edp.uEmail,'uPhone':edp.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2)})
+                response = render(request,"editprof.html",{'uName':edp.uName,'uEmail':edp.uEmail,'uPhone':edp.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"Courses":student.recommended_course,"course":result,"inform":"Your Recommended Courses:"})
                 print("sending student...")
                 return response
             except:
@@ -759,3 +765,11 @@ def editprof(request):
             return render(request,"error.html")
     else:
         return redirect("/register")
+def reccourse(request):
+    if request.method == "POST":
+        post_data = json.loads(request.body.decode("utf-8"))
+        student = Student.objects.get(email=request.session["email"])
+        student.recommended_course = post_data['courses']
+        print(post_data['courses'])
+        student.save()
+    return HttpResponse("K")

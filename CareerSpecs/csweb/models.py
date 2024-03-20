@@ -20,7 +20,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=255)
     date_of_birth = models.DateField(null=True)
     email=models.EmailField()
-
+    recommended_course=models.TextField(max_length=255,default="N/A")
     seat_no = models.CharField(max_length=20)
     stream = models.CharField(max_length=50)
 

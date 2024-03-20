@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <!-- section -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{% csrf_token %}
 <script>
 $(document).ready(function() {
     // Fetch scores from the HTML and calculate recommendation
@@ -15,6 +16,18 @@ $(document).ready(function() {
 
     // Display the recommended course
     $('#recommended-course').text('Recommended Course: ' + recommendedCourse);
+    const csrftoken = getCookie('csrftoken');
+    data = JSON.stringify({
+        courses: recommendedCourse
+    })
+    let response = fetch("http://127.0.0.1:8000/rec/", {
+        method: 'POST',
+        body: data,
+        headers: {'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+        "X-CSRFToken": csrftoken}
+    });
+    console.log(response)
 })
 </script>
 <script src="{% static 'js/result.js' %} "></script>
