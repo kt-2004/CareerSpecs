@@ -4,7 +4,7 @@
 {% csrf_token %}
 <script>
 $(document).ready(function() {
-    // Fetch scores from the HTML and calculate recommendation
+    // Fetch scores from the HTML and calculate recommendation 
     let scores = [
         {% for i in subjects.items %}
         {"{{i.0}}" : "{{i.1}}"},
@@ -29,6 +29,7 @@ $(document).ready(function() {
     });
     console.log(response)
 })
+//This script of csrf token used here is for getting same result with course on myprofile..
 </script>
 <script src="{% static 'js/result.js' %} "></script>
 <div class="section layout_padding contact_section" style="background:white">

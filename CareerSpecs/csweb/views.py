@@ -104,7 +104,7 @@ def myprof(request):
         # response.set_cookie('username',prof.uName) #To get updated user name its stored in the cookie.
         request.session['email'] = uEmail
         request.session['username'] = uName
-        return redirect("/myprof")
+        return redirect("/editprof")
     if request.session.get("username","") != "":
         try:
             print("fetching user...")
@@ -115,7 +115,7 @@ def myprof(request):
                 student = Student.objects.get(email=request.session["email"])
                 print("student found")
                 result = eval(str(student.result)) # eval function is used to represent the score of student .
-                response = render(request,"myprof.html",{'uName':prof.uName,'uEmail':prof.uEmail,'uPhone':prof.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"Courses":Student.recommended_course,"course":result,"inform":"Your Recommended Courses:","recommend":Student.recommended_course})
+                response = render(request,"myprof.html",{'uName':prof.uName,'uEmail':prof.uEmail,'uPhone':prof.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"Courses":student.recommended_course,"course":result,"inform":"Your Recommended Courses:"})
                 print("sending student...")
                 return response
             except:
@@ -408,6 +408,7 @@ def clg_to_db(request):
                             clg.courses.add(j.id)
                         clg.save()
     return HttpResponse("check console")
+#This function is to add description of all courses at admin side by using /streams...
 def stream_desc(request):
     strup = """1. BCA
 Sub:Computer,English,Mathematics,Logical and Reasoning,Statistics,Ethical Hacking,Web Design,Computer Architecture,Cyber Security,Coding,Digital Arts,Leadership,Research and Obervation,Robotics & ML/AI,Animation
@@ -765,11 +766,12 @@ def editprof(request):
             return render(request,"error.html")
     else:
         return redirect("/register")
+#For import and show  recommended courses from  result page to myprofile...
 def reccourse(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
         student = Student.objects.get(email=request.session["email"])
         student.recommended_course = post_data['courses']
-        print(post_data['courses'])
+        print (list(post_data['courses']))
         student.save()
-    return HttpResponse("K")
+    return HttpResponse("Nothing found...")
