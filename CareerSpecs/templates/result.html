@@ -15,7 +15,6 @@ $(document).ready(function() {
     const recommendedCourse = recommendCourse(scores);
 
     // Display the recommended course
-    $('#recommended-course').text('Recommended Course: ' + recommendedCourse);
     const csrftoken = getCookie('csrftoken');
     data = JSON.stringify({
         courses: recommendedCourse
@@ -32,14 +31,15 @@ $(document).ready(function() {
 //This script of csrf token used here is for getting same result with course on myprofile..
 </script>
 <script src="{% static 'js/result.js' %} "></script>
-<div class="section layout_padding contact_section" style="background:white">
+<div class="section layout_padding contact_section" style="background-image: url('../static/images/prof3.jpg');background-size:cover; -webkit-text-fill-color:midnightblue;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <table>
                     <tr>
                         <td>
-                            <h2 style="background: transparent; border-radius: 7px; ">{{info}} {{score}}</h1>
+                            <h1 style="background: transparent; border-radius: 7px;"><b>Your Percentage:{{percentage}}%</b></h1>
+                            <h2 style="background: transparent; border-radius: 7px; "><b>{{info}} {{score}}</b></h2>
                         </td>
                     </tr>
                     <tr style="display: flex;flex-wrap: wrap;">
@@ -48,9 +48,27 @@ $(document).ready(function() {
                             <h3 style="background: transparent; border-radius: 7px; ">{{i.0}} : {{i.1}}</h3>
                             {% endfor %}
                         </td>
+                        <td>
+                            <h2 id="recommended-course" style="background: transparent; border-radius: 7px;"><b>Recommended Courses And Their Leading Colleges:</b></h2>
+                            <!--college details to show  with college-->
+                            {% for stream in streams.items %}
+                            <details style="margin: 1%;">
+                            <summary><h1 style="font-weight: bolder;display: inline;">{{stream.0}}</h1></summary>
+                            {% for college in stream.1 %}
+                            <details style="margin: 1%;-webkit-text-fill-color:black;">
+                            <summary ><h2 style="display: inline;">{{college.0}}</h2></summary>
+                            <h3>Addres: {{college.1}}</h3>
+                            <h3>Fees: {{college.2}}</h3>
+                            <h3>Hostel Facillities: {{college.3}}</h3>
+                            <h3>Placement Ratio: {{college.4}}</h3>
+                            <h3>Transportation Facilities: {{college.5}}</h3>
+                            <h3>Link: {{college.6}}</h3>
+                            </details>
+                            {% endfor %}
+                            </details>
+                            {% endfor %}
+                        </td>
                     </tr>
-                    <h1 style="background: transparent; border-radius: 7px;">Your Percentage: {{percentage}}%</h1>
-                    <h2 id="recommended-course" style="background: transparent; border-radius: 7px;">Recommended Course: {{recommendedCourse}}</h2>
                 </table>
             </div>
         </div>

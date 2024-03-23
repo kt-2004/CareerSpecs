@@ -15,6 +15,7 @@ from django.db import connection
 from django.views.decorators.cache import never_cache
 from django.template import RequestContext
 import json
+import ast
 
 
 #This function is made to curbe direct access of pages by the page names.i.e:/feedback etc.
@@ -85,7 +86,7 @@ def changepass(request):
         return response
     else:
         return render(request,"changepass.html")
-#Myprofile with score of students and also can update username.
+#This func.for students to update details by clicking on editprof else only static view of profile will be shown.
 def myprof(request):
     if not get_referer(request):
         return redirect("/register")
@@ -104,7 +105,7 @@ def myprof(request):
         # response.set_cookie('username',prof.uName) #To get updated user name its stored in the cookie.
         request.session['email'] = uEmail
         request.session['username'] = uName
-        return redirect("/editprof")
+        return redirect("/myprof")
     if request.session.get("username","") != "":
         try:
             print("fetching user...")
@@ -115,11 +116,15 @@ def myprof(request):
                 student = Student.objects.get(email=request.session["email"])
                 print("student found")
                 result = eval(str(student.result)) # eval function is used to represent the score of student .
-                response = render(request,"myprof.html",{'uName':prof.uName,'uEmail':prof.uEmail,'uPhone':prof.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"Courses":student.recommended_course,"course":result,"inform":"Your Recommended Courses:"})
+                if student.recommended_course != "N/A":
+                    courses_list = ast.literal_eval(student.recommended_course)
+                else:
+                    courses_list = student.recommended_course
+                response = render(request,"myprof.html",{'uName':prof.uName,'uEmail':prof.uEmail,'uPhone':prof.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"Courses":courses_list,"course":result,"inform":"Your Recommended Courses:"})
                 print("sending student...")
                 return response
-            except:
-                print("student not found")
+            except Exception as e:
+                print("student not found because: " + str(e))
                 response = render(request,"myprof.html",{'uName':prof.uName,'uEmail':prof.uEmail,'uPhone':prof.uPhone})
                 return response
         except Exception as e:
@@ -320,14 +325,20 @@ def result(request):
         return redirect("/register")
     try:
         student = User.objects.get(uEmail=request.session["email"]).Student
+        recommended_course = student.recommended_course
+        try:
+            courses_list = ast.literal_eval("[" + recommended_course + "]")
+        except Exception as e:
+            courses_list = "N/A"
+        streams = get_college_info(courses_list)
         result = eval(str(student.result)) # eval function is used to represent the score of student.
-        response = render(request,"result.html",{"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2)})
+        response = render(request,"result.html",{"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"streams":streams})
         response.set_cookie("stream",str(student.stream))
         print(student.stream)
         return response
     except Exception as e:
         print(e)
-        return redirect("/myprof")
+        return HttpResponse(e)
 #Adding csv files of mcq to database here.Get refered function is not required here.
 #For-loop is used to add multiple files at once. 
 def add_to_db(request):
@@ -734,38 +745,6 @@ Sub:Mathematics,English,Computer,Fine Arts,Digital Arts,Travelling,Animation,Web
     return HttpResponse("Check Console")
 def handler404(request, exception):
     return render(request, '404.html', status=404)
-#In this function user can only see their profile can't edit....
-def editprof(request):
-    if not get_referer(request):
-        return redirect("/register")
-    if request.method=="POST":
-        print("updating user...")
-        uEmail = request.POST['uEmail']
-        uName = request.POST['uName']
-        uPhone = request.POST['uPhone']
-        edp=User.objects.get(uName=request.session['username'])
-    if request.session.get("username","") != "":
-        try:
-            print("fetching user...")
-            edp=User.objects.get(uName=request.session['username'])
-            print("user found " + edp.uName)
-            try:
-                print("fetching student...")
-                student = Student.objects.get(email=request.session["email"])
-                print("student found")
-                result = eval(str(student.result)) # eval function is used to represent the score of student .
-                response = render(request,"editprof.html",{'uName':edp.uName,'uEmail':edp.uEmail,'uPhone':edp.uPhone,"score":student.score,"subjects":result,"info":"Your total score is:","percentage":round(student.score*100/27,2),"Courses":student.recommended_course,"course":result,"inform":"Your Recommended Courses:"})
-                print("sending student...")
-                return response
-            except:
-                print("student not found")
-                response = render(request,"editprof.html",{'uName':edp.uName,'uEmail':edp.uEmail,'uPhone':edp.uPhone})
-                return response
-        except Exception as e:
-            print("Exception!!!!!!") #for cmd
-            return render(request,"error.html")
-    else:
-        return redirect("/register")
 #For import and show  recommended courses from  result page to myprofile...
 def reccourse(request):
     if request.method == "POST":
@@ -775,3 +754,25 @@ def reccourse(request):
         print (list(post_data['courses']))
         student.save()
     return HttpResponse("Nothing found...")
+#college recommend..
+def get_college_info(recommended_courses):
+    college_info = {}
+    with connection.cursor() as cursor:
+        for course in recommended_courses[0]:
+            print(course)
+            cursor.execute(f"SELECT college_name_id,fees FROM csweb_stream WHERE name='{course}'")
+            t1 = list(cursor.fetchall())    #fetch all ques from user selected int.subs.
+            for i in t1:
+                if course not in college_info.keys():
+                    college_info[course] = []
+                clg = College.objects.get(id=i[0])
+                fees = i[1]
+                college_info[course].append([clg.name,clg.address,fees,clg.hostel,clg.placement,clg.transport,clg.link])
+    print(college_info)
+    return college_info
+
+def recommend_colleges(request):
+    recommended_course = Student.objects.get(email=request.session["email"]).recommended_course
+    courses_list = ast.literal_eval(recommended_course)
+    streams = get_college_info(courses_list)
+    return render(request, 'result.html', {'streams': streams})

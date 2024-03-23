@@ -20,6 +20,7 @@ urlpatterns = [
     path('streams/',views.stream_desc,name='streams'),
     path('course/',views.course,name='course'),
     path('college/',views.college,name='college'),
-    path('editprof/',views.editprof,name='editprof'),
+    path('myprof/',views.myprof,name='myprof'),
     path('rec/',views.reccourse,name='rec'),
+   
 ]    

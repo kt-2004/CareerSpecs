@@ -8,6 +8,20 @@
     background-blend-mode: color-burn;
     background-image: url('../static/images/prof3.jpg');
     margin-top: 0px;">
+    
+<script>
+    function changeprof(){
+        document.getElementById("uEmail").disabled = false;
+        document.getElementById("uPhone").disabled = false;
+        document.getElementById("uName").disabled = false;
+        document.getElementById("uEmail").readOnly = false;
+        document.getElementById("uPhone").readOnly = false;
+        document.getElementById("uName").readOnly = false;
+        document.getElementById("editprof").style.display = "none";
+        document.getElementById("submitprof").style.display = "block";
+        alert("You can now edit your details.")
+    }
+</script>
     <div class="container">
         <div class="container-fluid">
             <table class="table table-borderless text-light">
@@ -16,19 +30,19 @@
                     <tr style="display: flex;flex-wrap: wrap;width:fit-content">
                         <th style="width: 10em;">Username:</th>
                         <td style="display: flex;flex-wrap: wrap;">
-                            <input type="text" name="uName" value="{{uName}}" style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" />
+                            <input readonly disabled id="uName" type="text" name="uName" value="{{uName}}" style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" />
                         </td>
                     </tr>
                     <tr style="display: flex;flex-wrap: wrap;width:fit-content">
                         <th style="width: 10em;">Email:</th>
                         <td>
-                            <input type="email" name="uEmail" value="{{uEmail}}" style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
+                            <input readonly disabled id="uEmail" type="email" name="uEmail" value="{{uEmail}}" style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
                         </td>
                     </tr>
                     <tr style="display: flex;flex-wrap: wrap;width:fit-content">
                         <th style="width: 10em;">Phone no:</th>
                         <td>
-                            <input type="numbers" name="uPhone" value="{{uPhone}}" minlength="10" maxlength="10 " style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" />
+                            <input readonly disabled id="uPhone" type="numbers" name="uPhone" value="{{uPhone}}" minlength="10" maxlength="10 " style="background: white; border-bottom: 2px solid sienna;border-radius: 7px;" />
                         </td>
                     </tr>
                     <tr>
@@ -38,13 +52,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <h2 style="background: transparent; border-radius: 7px; ">{{info}} {{score}}</h2>
-                            <h1 style="background: transparent; border-radius: 7px;">Your Percentage: {{percentage}}%</h1>
-                            <h2 id="recommended-course" style="background: transparent; border-radius: 7px;">Recommended Course: {{Courses}}</h2>
+                            <h2 style="background: transparent; border-radius: 7px;">{{info}} {{score}}</h2>
+                            <h2 style="background: transparent; border-radius: 7px;">Your Percentage: {{percentage}}%</h1>
+                            <h1 id="recommended-course" style="background: transparent; border-radius: 7px;-webkit-text-fill-color: red;"><b>Recommended Course:</b></h2> 
+                            <div style="display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: column;">
+                                {% for i in Courses %}
+                                    <h3 style="background: transparent; border-radius: 7px; ">{{i}}</h3>
+                                {% endfor %}    
+                            </div>
                         </td>
                     </tr>
                     <tr style="display: flex;flex-wrap: wrap;">
                         <td>
+                            <h1 style="-webkit-text-fill-color: red;"><b>Your Exam Score:</b></h2>
                             {% for i in subjects.items %}
                             <h3 style="background: transparent; border-radius: 7px; ">{{i.0}} : {{i.1}}</h3>
                             {% endfor %}
@@ -54,7 +74,9 @@
             <table>
                 <tr>
                     <td id="feedback-submit">
-                        <button type="submit" style="border-radius: 10px; background-color:lemonchiffon;cursor: pointer;">Update Profile
+                        <button onclick="changeprof" type="button" id="editprof" style="border-radius: 10px; background-color:black;cursor: pointer;-webkit-text-fill-color:wheat;width:max-content;">Edit Profile
+                        </button>
+                        <button style="display:none;background-color:black;border-radius:10px;-webkit-text-fill-color:wheat;cursor:pointer;width:max-content;" type="submit" id="submitprof">Update Profile
                         </button>
                     </td>
                     <td> <br> <br></td>
@@ -64,4 +86,7 @@
         </div>
     </div>
 </section>
+<script>
+    document.getElementById("editprof").addEventListener("click", changeprof);
+</script>
 {% endblock %}
