@@ -182,7 +182,7 @@
         } else {
             document.getElementById("isLoggedIn").style.display = "none"
             document.getElementById("isNotLoggedIn").style.display = "block"
-        }
+        }//this timeline is for HOW IT WORKS style at home page ...
         timeline(document.querySelectorAll('.timeline'), {
             forceVerticalMode: 700,
             mode: 'horizontal',
@@ -190,7 +190,7 @@
             visibleItems: 4
         });
     </script>
-    <script>
+    <script>//This script is for color change on hover at navbar when particular page  is active...
         url = window.location.href.replace(/^(?:\/\/|[^/]+)*\//, '').replace("/", "");
         elements = document.getElementsByClassName("nav-item")
         switch (url) {
