@@ -3,6 +3,9 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 {% csrf_token %}
 <script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
 $(document).ready(function() {
     // Fetch scores from the HTML and calculate recommendation 
     let scores = [
@@ -27,6 +30,12 @@ $(document).ready(function() {
         "X-CSRFToken": csrftoken}
     });
     console.log(response)
+    if(!window.location.hash) {
+        sleep(500).then(() => {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        })
+    }
 })
 //This script of csrf token used here is for getting same result with course on myprofile..
 </script>
@@ -57,12 +66,12 @@ $(document).ready(function() {
                             {% for college in stream.1 %}
                             <details style="margin: 1%;-webkit-text-fill-color:black;">
                             <summary ><h2 style="display: inline;">{{college.0}}</h2></summary>
-                            <h3>Addres: {{college.1}}</h3>
-                            <h3>Fees: {{college.2}}</h3>
-                            <h3>Hostel Facillities: {{college.3}}</h3>
-                            <h3>Placement Ratio: {{college.4}}</h3>
-                            <h3>Transportation Facilities: {{college.5}}</h3>
-                            <h3>Link: {{college.6}}</h3>
+                            <h3><b>Addres:</b> {{college.1}}</h3>
+                            <h3><b>Fees: </b>{{college.2}}</h3>
+                            <h3><b>Hostel Facillities:</b> {{college.3}}</h3>
+                            <h3><b>Placement Ratio: </b>{{college.4}}</h3>
+                            <h3><b>Transportation Facilities:</b> {{college.5}}</h3>
+                            <h3><b>Link: </b><a href="{{college.6}}">{{college.6}}</a></h3>
                             </details>
                             {% endfor %}
                             </details>

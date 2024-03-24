@@ -285,7 +285,7 @@ def mcq(request):
         for i in subjects.keys():
             subjects[i] = str(corrects[i]) + "/" + str(subjects[i])
         request.session["subjects"]=subjects    #here format of score is given i.e Acc=3/3
-        t = User.objects.get(uEmail=request.session["email"]).Student
+        t = User.objects.get(uEmail=request.session["email"]).Student #student object is taken here as a refrenece..
         t.result = str(dict(subjects))
         t.score = score
         t.save()
@@ -345,7 +345,7 @@ def add_to_db(request):
     # return HttpResponse("check console")
     from os import listdir
     from os.path import isfile, join
-    onlyfiles = [f for f in listdir(r"D:\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\mcq") if isfile(join(r"D:\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\mcq", f))]
+    onlyfiles = [f for f in listdir(r"D:\\CareerSpecs-venv v1.7\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\mcq") if isfile(join(r"D:\\CareerSpecs-venv v1.7\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\mcq", f))]
     for i in onlyfiles:
         with open(f'csweb/static/mcq/{i}', mode ='r',encoding="utf8") as file:
             csvFile = list(csv.reader(file))
@@ -380,7 +380,7 @@ def clg_to_db(request):
     # return HttpResponse("check console")
     from os import listdir
     from os.path import isfile, join
-    onlyfiles = [f for f in listdir(r"D:\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\Courses") if isfile(join(r"D:\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\Courses", f))]
+    onlyfiles = [f for f in listdir(r"D:\\CareerSpecs-venv v1.7\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\Courses") if isfile(join(r"D:\\CareerSpecs-venv v1.7\\CareerSpecs-venv\\CareerSpecs\\csweb\static\\Courses", f))]
     n=0
     for i in onlyfiles:
         with open(f'csweb/static/Courses/{i}', mode ='r',encoding="utf8") as file:
@@ -409,7 +409,7 @@ def clg_to_db(request):
                             continue
                     except:
                         Stream.objects.create(
-                            name=i.replace(".csv",""),
+                            name=(i.replace(".csv","")).strip(),
                             fees=lines[2],
                             college_name = clg
                             )
@@ -422,292 +422,292 @@ def clg_to_db(request):
 #This function is to add description of all courses at admin side by using /streams...
 def stream_desc(request):
     strup = """1. BCA
-Sub:Computer,English,Mathematics,Logical and Reasoning,Statistics,Ethical Hacking,Web Design,Computer Architecture,Cyber Security,Coding,Digital Arts,Leadership,Research and Obervation,Robotics & ML/AI,Animation
+Sub:Computer, English, Mathematics, Logical & Reasoning, Statistics, Ethical Hacking, Web Design, Computer Architecture, Cyber Security, Coding, Digital Arts, Leadership, Research and Obervation, Robotics and AI, Animation
 
 2. BAF
-Sub:Mathematics, Accounts,Business Adminstration,English,Computer,Satistics,Civics,Trigonometry,Writing,Leadership,Law
+Sub:Mathematics, Accounts, Business Adminstration, English, Computer, Statistics, Civics, Trigonometry, Writing, Leadership, Law
 
 3. Company Secretary
-Sub:Accounts,Economics,Business Administration,English,Arithmetic,Algebra,Civics,Law,Statistics,Leadership,Management
+Sub:Accounts, Economics, Business Administration, English, Arithmetic, Algebra, Civics, Law, Statistics, Leadership, Management
 
 4. Cost and Management Accountant
-Sub:Mathematics, Account,Economics,Business Administration,English,Computer,Arithmetic,Algebra,Statistics,Reading,Writing,Management,Leadership
+Sub:Mathematics, Account, Economics, Business Administration, English, Computer, Arithmetic, Algebra, Statistics, Reading,Writing, Management, Leadership
 
 5. Bachelor of Economics 
-Sub: Statistics, Mathematics, Economics,English,Accounts,Satistics,Civics,Political Science,Research and Observation,Leadership  
+Sub:Statistics, Mathematics, Economics, English, Accounts, Statistics, Civics, Political Science, Research and Observation,Leadership  
 
 6. BCOM
-Sub:Mathematics, Account,Economics,Business Administration,English,Computer,Statistics,Arithmetic,Leadership,Logical and Reasoning
+Sub:Mathematics, Accounts, Economics, Business Administration, English, Computer, Statistics, Arithmetic, Leadership, Logical & Reasoning
 
 7. BBA
-Sub: Business Administration, Accounts,Computer,English,Statistics,Economics,Law,Web Design,Leadership,Logical and Reasoning,Research and Observation
+Sub:Business Administration, Accounts, Computer, English, Statistics, Economics, Law, Web Design, Leadership, Logical & Reasoning, Research and Observation
 
 8. Bachelor of Business Management
-Sub:Accounts, Business Administration, Economics, English,Mathematics,Staistics,Arithmetic,Algebra,Law,Civics,Leadership,Computer,Digital Arts
+Sub:Accounts, Business Administration, Economics, English, Mathematics, Statistics, Arithmetic, Algebra, Law, Civics, Leadership, Computer, Digital Arts
 
 9. Integrated MBA 
-Sub: Accounts, Business Administration, Economics, English,Computer,Law,Civics,Logical and Reasoning,Leadership,Management,Research and Observation
+Sub:Accounts, Business Administration, Economics, English, Computer, Law, Civics, Logical & Reasoning, Leadership, Management,Research and Observation
 
 10. LLB 
-Sub:English,Mathematics,History,Civics,Political Science,Economics,Law,Economics,Psychology,Statistics,Management,Leadership,Reading,Writing,Anchoring
+Sub:English, Mathematics, History, Civics, Political Science, Economics, Law, Economics, Psychology, Statistics, Management,Leadership, Reading, Writing, Anchoring
 
 12. BSc IT
-Sub:English,Mathematics,Statistics,Computer,Computer Architecture,Web Design,Ethical Hacking,Cyber Security,Robotics & ML/AI,Coding,Digital Arts,Leadership,Research and Observation
+Sub:English, Mathematics, Statistics, Computer, Computer Architecture, Web Design, Ethical Hacking, Cyber Security, Robotics and AI, Coding, Digital Arts, Leadership, Research and Observation
 
 14. Media and Communication
-Sub: Sociology, English, Mathematics,Economics,Business Administration,Political Science,Law,Civics,Digital Arts,Philosophy,Leadership,Management,Reading,Writing,Anchoring,Animation
+Sub:Sociology, English, Mathematics, Economics, Business Administration, Political Science, Law, Civics, Digital Arts,Philosophy, Leadership, Management, Reading, Writing, Anchoring, Animation
 
 15. Mass and Communication 
-Sub:English,Sociology,Political Science,Civics,Fine Arts,Digital Arts,Photography,Geography,Travelling,Leadership,Anchoring,Animation,Reading,Writing,Leadership
+Sub:English, Sociology, Political Science, Civics, Fine Arts, Digital Arts, Photography, Geography, Travelling, Leadership,Anchoring, Animation, Reading, Writing
 
 16. Mass and Communication in Film
-Sub:English, History,Gujarati,Fine Arts,Digital Arts,Photography,Geography,Travelling,Leadership,Anchoring,Animation,Reading,Writing,Acting,Makeup,Music,Leadership,P.T,Computer
+Sub:English, History, Gujarati, Fine Arts, Digital Arts, Photography, Geography, Travelling, Leadership, Anchoring, Animation,Reading, Writing, Acting, Makeup, Music, P.T, Computer
 
 17. BSc in Biology
-sub:Biology,Chemistry,Physics,Mathematics,Statistics,Reading,Writing,Computer,Management,English,Lab Skills,Research and Observation
+sub:Biology, Chemistry, Physics, Mathematics, Statistics, Reading, Writing, Computer, Management, English, Lab Skills, Research and Observation
 
 18. BSc in Microbiology
-sub:Biology,English,Chemistry,Physics,Mathematics,Computer,Statistics,Psychology,Management,Leadership
+sub:Biology, English, Chemistry, Physics, Mathematics, Computer, Statistics, Psychology, Management, Leadership
 
 19. Bachelor in Dental surgery
-sub:Biology,English,Chemistry,Physics,Mathematics,Computer,Statistics,Psychology,Management,Leadership
+sub:Biology, English, Chemistry, Physics, Mathematics, Computer, Statistics, Psychology, Management, Leadership
 
 20. BSc in zoology
-sub:Biology,English,Chemistry,Leadership,Geography,Wildlife Research,History,Lab Skills,Research and Observation,Travelling,Environmental Science
+sub:Biology, English, Chemistry, Leadership, Geography, Wildlife Research, History, Lab Skills, Research and Observation,Travelling, Environmental Science
 
 21. BSc in Medical Technology
-sub:Biology,Mathematics,Physics,Chemistry,English,Coding,Leadership,Environmental Science,Robotics & ML/AI,Computer Architecture
+sub:Biology, Mathematics, Physics, Chemistry, English, Coding, Leadership, Environmental Science, Robotics and AI, Computer Architecture
 
 22. BSc in Biotechnology
-sub:Biology,Chemistry,Mathematics,English,Coding,Cyber Security,Lab Skills,Research and Observation,Logical and Reasoning,Computer Architecture
+sub:Biology, Chemistry, Mathematics, English, Coding, Cyber Security, Lab Skills, Research and Observation, Logical & Reasoning,Computer Architecture
 
 23. BSc in Botany
-sub:Biology,Chemistry,Mathematics,English,Gardening,Environmental Science,Lab Skills,Research and Observation,Leadership,Travelling,
+sub:Biology, Chemistry, Mathematics, English, Gardening, Environmental Science, Lab Skills, Research and Observation, Leadership, Travelling
 
 24. Bachelor of Homeopathic Medicine and Surgery
-sub:Biology,Chemistry,Mathematics,English,Sanskrit,P.T,Lab Skills,Gardening,Environmental Science, Cooking,History
+sub:Biology, Chemistry, Mathematics, English, Sanskrit, P.T, Lab Skills, Gardening, Environmental Science, Cooking, History
 
 25. BSc in Nursing
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Travelling,Leadership,
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Travelling, Leadership
 
 26. BSc in Life Science
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Environmental Science,Wildlife Research,Gardening,Leadership,Reading
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Environmental Science, Wildlife Research,Gardening, Leadership, Reading
 
 27. MBBS
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Logical and Reasoning,Reading,Writing,Leadership,Psychology
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Logical & Reasoning, Reading, Writing,Leadership, Psychology
 
 28. Bachelor of Veterinary Sciences
-sub:Biology,Chemistry,Physics,English,Environmental Science,Wildlife Research,Lab Skill,Research and Observation,
+sub:Biology, Chemistry, Physics, English, Environmental Science, Wildlife Research, Lab Skills, Research and Observation
 
 29. Bachelor of Pharmacy
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Reading,Writing,Civics,Mathematics,Computer
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Reading, Writing, Civics, Mathematics, Computer
 
 30. BSc in Food Technology
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Physics,Computer,Electronics and Hardware,Cooking,Photography,P.T
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Physics, Computer, Electronics and Hardware,Cooking, Photography, P.T
 
 31. BSc in Agriculture
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,P.T,Environmental Science,Gardening,Carpentry,Wildlife Research,Electronics and Hardware
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, P.T, Environmental Science, Gardening, Carpentary, Wildlife Research, Electronics and Hardware
 
 32. BSc in Genetics
-sub:Biology,Chemistry,Physics,Mathematics,English,Lab Skills,Research and Observation,Computer,Statistics,Trigonometry,Logical and Reasoning
+sub:Biology, Chemistry, Physics, Mathematics, English, Lab Skills, Research and Observation, Computer, Statistics, Trigonometry,Logical & Reasoning
 
 33. Bachelor of Science in Agrochemical Science
-sub:Biology,Chemistry,Physics,Mathematics,English,Lab Skills,Research and Observation,Geography,Electronics and Hardware,Environmental Science,Leadership
+sub:Biology, Chemistry, Physics, Mathematics, English, Lab Skills, Research and Observation, Geography, Electronics and Hardware, Environmental Science, Leadership
 
 34. Bachelor of Ayurvedic Medicine and Surgery
-sub:Biology,Chemistry,Physics,Sanskrit,English,Environmental Science,P.T,Lab Skills,Gardening, Cooking,History,Leadership,Music
+sub:Biology, Chemistry, Physics, Sanskrit, English, Environmental Science, P.T, Lab Skills, Gardening, Cooking, History,Leadership, Music
 
 35. BSc in Dairy Farming
-sub:Biology,Chemistry,Physics,English,Environmental Science,P.T,Lab Skills,Wildlife Research,Geography,Geometry,Leadership,Photography,Writing
+sub:Biology, Chemistry, Physics, English, Environmental Science, P.T, Lab Skills, Wildlife Research, Geography, Geometry,Leadership, Photography, Writing
 
 36. B.Tech in Dairy Technology
-sub:Biology,Chemistry,Physics,English,Environmental Science,P.T,Lab Skills,Wildlife Research,Geography,Geometry,Leadership,Photography,Writing,Computer,Computer Architecture
+sub:Biology, Chemistry, Physics, English, Environmental Science,P.T,Lab Skills, Wildlife Research, Geography, Geometry,Leadership, Photography, Writing, Computer, Computer Architecture
 
 37. BSc in Audiology
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Computer
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Computer
 
 38. Bachelor in Optometry
-sub:Biology,Chemistry,Physics,English,Mathematics,P.T,Lab Skills,Research and Observation,Management,Computer
+sub:Biology, Chemistry, Physics, English, Mathematics, P.T, Lab Skills, Research and Observation, Management, Computer
 
 39. Diploma in Pharmacy
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Reading,Writing,Civics,Mathematics,Computer
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Reading, Writing, Civics, Mathematics, Computer
 
 40. Diploma in Nursing
-sub:Biology,Chemistry,Physics,English,Lab Skills,Research and Observation,Travelling,Leadership
+sub:Biology, Chemistry, Physics, English, Lab Skills, Research and Observation, Travelling, Leadership
 
 41. Diploma in Medical Laboratory Technology
-sub:Biology,Chemistry,Physics,English,Mathematics,Computer,Lab Skills,Research and Observation,Management
+sub:Biology, Chemistry, Physics, English, Mathematics, Computer, Lab Skills, Research and Observation, Management
 
 43. Diploma in Operation Theatre Technology
-sub:Biology,Chemistry,Physics,English,Mathematics,Computer,Lab Skills,Research and Observation,Management
+sub:Biology, Chemistry, Physics, English, Mathematics, Computer, Lab Skills, Research and Observation, Management
 
 44. Diploma in X-Ray technology
-sub:Biology,Chemistry,Physics,English,Mathematics,Computer,Lab Skills,Research and Observation,Management,Electronics and Hardware 
+sub:Biology, Chemistry, Physics, English, Mathematics, Computer, Lab Skills, Research and Observation, Management, Electronics and Hardware 
 
 45. Bachelor in Physiotherapy
-sub:Biology,Chemistry,Physics,English,Mathematics,P.T,Lab Skills,Research and Observation,Management,Outdoor Games,Indoor Games
+sub:Biology, Chemistry, Physics, English, Mathematics, P.T, Lab Skills, Research and Observation, Management, Outdoor Games,Indoor Games
 
 46. Diploma in Nutrition and Dietetics
-sub:Biology,Chemistry,Physics,English,P.T,Cooking,Writing,Indoor Games,Outdoor Games,Logical and Reasoning,Lab Skills,Research and Observation,Management
+sub:Biology, Chemistry, Physics, English, P.T, Cooking, Writing, Indoor Games, Outdoor Games, Logical & Reasoning, Lab Skills,Research and Observation, Management
 
 47. B.Tech in Computer Science and Engineering
-sub:Computer, Mathematics,Physics,Chemistry,English ,Coding,Computer Architecture,Web Design,Logical and Reasoning,Cyber Security,Electronics or Hardware,Reading
+sub:Computer, Mathematics, Physics, Chemistry, English, Coding, Computer Architecture, Web Design, Logical & Reasoning, Cyber Security, Electronics and Hardware, Reading
 
 48. B.Tech in Mechanical Engineering
-sub:Mathematics,Physics,Chemistry,Computer,Economics,Statistics,Electronics and Hardware ,Logical and Reasoning, Geometry,History,Leadership,Management,Outdoor Games,Research and Observations
+sub:Mathematics, Physics, Chemistry, Computer, Economics, Statistics, Electronics and Hardware, Logical & Reasoning, Geometry,History, Leadership, Management, Outdoor Games, Research and Observation
 
 49. B.Tech in Electrical Engineering
-Sub:Electronics and Hardware,Mathematics,Physics,Chemistry,Arithmetic,Algebra,Geometry,Computer Architecture,Logical and Reasoning,Trigonometry,Coding ,Digital Arts,Management,Leadership 
+Sub:Electronics and Hardware, Mathematics, Physics, Chemistry, Arithmetic, Algebra, Geometry, Computer Architecture, Logical & Reasoning, Trigonometry, Coding, Digital Arts, Management, Leadership 
 
 50. B.Tech in Civil Engineering
-sub:Mathematics,Physics,Chemistry,Computer,English,P.T,Coding ,Logical and Reasoning ,Management ,Leadership,Outdoor Games,Geometry
+sub:Mathematics, Physics, Chemistry, Computer, English, P.T, Coding, Logical & Reasoning, Management, Leadership, Outdoor Games,Geometry
 
 51. B.Tech in Chemical Engineering
-sub:Chemistry,Physics,Mathematics,English,Computer,Cyber Security,Coding,Logical and Reasoning,Leadership
+sub:Chemistry, Physics, Mathematics, English, Computer, Cyber Security, Coding, Logical & Reasoning, Leadership
 
 52. BA in Biology
-sub:Biology,Physics,Chemistry,English,Reading,Writing,Logical and Reasoning,Lab Skills,Environmental Science,Research and Observation
+sub:Biology, Physics, Chemistry, English, Reading, Writing, Logical & Reasoning, Lab Skills, Environmental Science, Research and Observation
 
 53. BA in Communication
-sub:English,Sociology,Psychology,Leadership,Anchoring,Writing,Reading,Law,Digital Arts,Research and Observation
+sub:English, Sociology, Psychology, Leadership, Anchoring, Writing, Reading, Law, Digital Arts, Research and Observation
 
 54. BA in Economics
-sub:Economics,Mathematics,Political Science,Satistics,Writing,Business Adminstration,English,Law,Civics,Anchoring,History,Logical and Reasoning
+sub:Economics, Mathematics, Political Science, Statistics, Writing, Business Adminstration, English, Law, Civics, Anchoring,History, Logical & Reasoning
 
 55. BA in Education
-sub:English,Psychology,Sociology,Mathematics,Writing,Reading,Leadership,History,Environmental Science,Anchoring,Research and Observation,Painting,Digital Arts
+sub:English, Psychology, Sociology, Mathematics, Writing, Reading, Leadership, History, Environmental Science, Anchoring,Research and Observation, Painting, Digital Arts
 
 56. BA in English
-sub:English,History,Writing,Reading,Painting,Sociology,Philosophy
+sub:English, History, Writing, Reading, Painting, Sociology, Philosophy
 
 57. BA in History
-sub:History,Political Science,Sociology,Economics,Reading,Writing,English,Research and Observation,Leadership,Anchoring
+sub:History, Political Science, Sociology, Economics, Reading, Writing, English, Research and Observation, Leadership, Anchoring
 
 58. BA in Journalism
-sub:English,Gujarati,Political Science,Sociology,Economics,History,Leadership,Anchoring,Animation,Travelling,Law,Geography,Reading,Writing,Research and Observation,Logical and Reasoning
+sub:English, Gujarati, Political Science, Sociology, Economics, History, Leadership, Anchoring, Animation, Travelling, Law,Geography, Reading, Writing, Research and Observation, Logical & Reasoning
 
 59. BA in Philosophy
-sub:English,History,Sociology,Political Science,Economics,Sanskrit,Psychology,Logical and Reasoning,Reading,Writing,Leadership,Philosophy,Travelling
+sub:English, History, Sociology, Political Science, Economics, Sanskrit, Psychology, Logical & Reasoning, Reading, Writing,Leadership, Philosophy, Travelling
 
 60. BA in Political Science
-sub:English,Gujarati,Political Science,Psychology,Economics,Leadership,Writing,Anchoring,Law,Research and Observation,Logical and Reasoning
+sub:English, Gujarati, Political Science, Psychology, Economics, Leadership, Writing, Anchoring, Law, Research and Observation,Logical & Reasoning
 
 61. BA in Psychology
-sub:Psychology,Biology,Satistics,Sociology,English,Gujarati,Sanskrit,Management,Research and Observation,Reading,Leadership
+sub:Psychology, Biology, Statistics, Sociology, English, Gujarati, Sanskrit, Management, Research and Observation, Reading,Leadership
 
 62. BA in Studio Art
-sub:History,Sociology,English,Fine Arts,Digital Arts,Photography,Management,Painting,Handicrafts and Arts,Knitting,Carpentery
+sub:History, Sociology, English, Fine Arts, Digital Arts, Photography, Management, Painting, Handicrafts and Arts, Knitting,Carpentary
 
 63. BA in Theatre and Drama
-sub:English,Gujarati,Sanskrit,Sociology,Fine Arts,Acting,Music,Leadership,Travelling,Psychology
+sub:English, Gujarati, Sanskrit, Sociology, Fine Arts, Acting, Music, Leadership, Travelling, Psychology
 
 64. BA in Music
-sub:English,Gujarati,Sanskrit,Psychology,Fine Arts,Digital Arts,Photography,Music,Management,
+sub:English, Gujarati, Sanskrit, Psychology, Fine Arts, Digital Arts, Photography, Music, Management
 
 65. BDes in fashion Designing
-sub:English,History,Fine Arts,Digital Arts,Photography,Handicraft and Arts,Management,Painting,
+sub:English, History, Fine Arts, Digital Arts, Photography, Handicraft and Arts, Management, Painting
 
 66. BDes in Interior Design
-sub:Mathematics,Physics,Geography,English,Fine Arts,Digital Arts,Psychology,Painting,Management,Animation
+sub:Mathematics, Physics, Geography, English, Fine Arts, Digital Arts, Psychology, Painting, Management, Animation
 
 67. BDes in Communication Design
-sub:Mathematics,English,History,Computer,Digital Arts,Fine Arts,Writing,Law,Research and Observation
+sub:Mathematics, English, History, Computer, Digital Arts, Fine Arts, Writing, Law, Research and Observation
 
 68. BDes in Industrial & Product Design
-sub:Mathematics,Physics,English,Physics,Chemistry,Fine Arts,Digital Arts,Business Administration,Management,Law,Research and Observation
+sub:Mathematics, Physics, English, Physics, Chemistry, Fine Arts, Digital Arts, Business Administration, Management, Law,Research and Observation
 
 69. Bachelor of Journalism & Mass Communication
-sub:English,Gujarati,Political Science,Sociology,Economics,History,Leadership,Anchoring,Animation,Travelling,Law,Geography,Reading,Writing,Research and Observation,Logical and Reasoning
+sub:English, Gujarati, Political Science, Sociology, Economics, History, Leadership, Anchoring, Animation, Travelling, Law,Geography, Reading, Writing, Research and Observation, Logical & Reasoning
 
 70. BA LLB
-sub:Mathematics,Economics,Political Science,History,English,Logical and Reasoning,Leadership,Management,Anchoring,Psychology,Law,Reading,Writing
+sub:Mathematics, Economics, Political Science, History, English, Logical & Reasoning, Leadership, Management, Anchoring,Psychology, Law, Reading, Writing
 
 71. Diploma in Education
-sub:English,Psychology,Sociology,Mathematics,Writing,Reading,Leadership,History, Environmental Science,Anchoring,Research and Observation,Painting,Digital Arts
+sub:English, Psychology, Sociology, Mathematics, Writing, Reading, Leadership, History, Environmental Science, Anchoring,Research and Observation, Painting, Digital Arts
 
 72. BBA Hons  in Hospitality and Tourism Management
-Sub:English,Economics,Business Administration,Accounts,Fine Arts,Leadership,Management,Travelling,Geography
+Sub:English, Economics, Business Administration, Accounts, Fine Arts, Leadership, Management, Travelling, Geography
 
 73. Diploma in 3D Animation
-Sub:English,Computer,Mathematics,Algebra,Geometry,Trigometry,Digital Arts,Animation,Painting
+Sub:English, Computer, Mathematics, Algebra, Geometry, Trigonometry, Digital Arts, Animation, Painting
 
 74. Advanced Diploma in Animation
-Sub:English,Computer,Mathematics,Algebra,Geometry,Trigometry,Digital Arts,Animation,Painting
+Sub:English, Computer, Mathematics, Algebra, Geometry, Trigonometry, Digital Arts, Animation, Painting
 
 75. Diploma in Aviation Management
-Sub:Mathematics,English,Computer,Geography,Environmental Science,Travelling,Leadership,Management,Makeup
+Sub:Mathematics, English, Computer, Geography, Environmental Science, Travelling, Leadership, Management, Makeup
 
 76. Diploma in Beauty Therapy
-Sub:Biology,English,P.T,Psychology,Makeup
+Sub:Biology, English, P.T, Psychology, Makeup
 
 77. Diploma in Broadcast Graphics
-Sub:English,Computer,Fine Arts,Digital Arts,Web Design,Animation,Management
+Sub:English, Computer, Fine Arts, Digital Arts, Web Design, Animation, Management
 
 78. Diploma in Event Management
-Sub:English,Economics,Accounts,Computer,Business Administration,Management,Fine Arts,Psychology,Leadership,Anchoring,Travelling
+Sub:English, Economics, Accounts, Computer, Business Administration, Management, Fine Arts, Psychology, Leadership, Anchoring,Travelling
 
 79. Diploma in Fashion, Textile and Apparel Design (Part Time)
-Sub:English,Arithmetics,Computer,Fine Arts,Handicraft & Arts,Economics,Reasearch and Observation,Digital Arts,Management
+Sub:English, Arithmetic, Computer, Fine Arts, Handicraft and Arts, Economics, Reasearch and Observation, Digital Arts, Management
 
 80. Diploma in Game Design And Integration
-Sub:Mathematics,Computer,Computer Architecture,English,Fine Arts,Physics,Robotics & ML/AI,Cyber Security,Coding,Web Design,Animation,Logical and Reasoning,Digital Arts
+Sub:Mathematics, Computer, Computer Architecture, English, Fine Arts, Physics, Robotics and AI, Cyber Security, Coding, Web Design, Animation, Logical & Reasoning, Digital Arts
 
 81. Diploma in Graphic, Web and Multimedia Design
-Sub:English,Mathematics,Fine Arts,Web Design,Computer,Cyber Security,Digital Arts,Coding,Painting
+Sub:English, Mathematics, Fine Arts, Web Design, Computer, Cyber Security, Digital Arts, Coding, Painting
 
 82. Diploma in Hotel and Tourism Management
-Sub:English,Business Administration,Economics,Accounts,Computer,Management,Leadership,Cooking
+Sub:English, Business Administration, Economics, Accounts, Computer, Management, Leadership, Cooking
 
 83. Diploma in Photography and VFX (Part Time)
-Sub:English,Computer,Fine Arts,Digital Arts,Photography,Travelling,Animation
+Sub:English, Computer, Fine Arts, Digital Arts, Photography, Travelling, Animation
 
 84. Diploma in Photography, Videography & Cinematography
-Sub:English,Computer,Fine Arts,Digital Arts,Photography,Animation,Travelling
+Sub:English, Computer, Fine Arts, Digital Arts, Photography, Animation, Travelling
 
 85. Diploma in Visual Effects
-Sub:Mathematics,Computer,English,Animation,Computer Architecture,Digital Arts,Coding,Fine Arts,Animation
+Sub:Mathematics, Computer, English, Animation, Computer Architecture, Digital Arts, Coding, Fine Arts
 
 86. B.Tech in  Electronics and Communication Engineering
-sub:Physics,Mathematics ,English ,Computer ,Coding ,Electronics and Hardware,Logical and Reasoning,Computer Architecture
+sub:Physics, Mathematics, English, Computer, Coding, Electronics and Hardware, Logical & Reasoning, Computer Architecture
 
 87. B.Tech in  Electronics and Communication
-sub:Physics,Mathematics ,English ,Computer ,Coding ,Electronics and Hardware,Logical and Reasoning,Computer Architecture
+sub:Physics, Mathematics, English, Computer, Coding, Electronics and Hardware, Logical & Reasoning, Computer Architecture
 
 88. B.Tech in  Electronics and instrumentation Engineering
-sub:Physics ,Chemistry ,Mathematics ,English ,Computer ,Electronics and Hardware,Logical and Reasoning,Management,Digital Arts
+sub:Physics, Chemistry, Mathematics, English, Computer, Electronics and Hardware, Logical & Reasoning, Management, Digital Arts
 
 89. B.Tech in Aeronautical Engineering
-sub:Mathematics ,Physics ,Chemistry ,Computer,English ,Logical and Reasoning,Web Design,Computer Architecture,Outdoor Games,Electronics and Hardware,Fine Arts
+sub:Mathematics, Physics, Chemistry, Computer, English, Logical and Reasoning, Web Design, Computer Architecture, Outdoor Games,Electronics and Hardware, Fine Arts
 
 90. B.Tech in Automobile Engineering
-sub:Mathematics ,Physics ,Chemistry ,English, Computer ,Electronics and Hardware,Logical and Reasoning,Coding,Leadership ,Computer Architecture,Web Design,History 
+sub:Mathematics, Physics, Chemistry, English, Computer, Electronics and Hardware, Logical & Reasoning, Coding, Leadership,  Computer Architecture, Web Design, History 
 
 91. B.Tech in Computer Engineering
-sub:Mathematics ,Physics ,Chemistry ,English, Computer,Statistics,Algebra, Cyber Security,Trigonometry,Economics,Digital Arts
+sub:Mathematics, Physics, Chemistry, English, Computer, Statistics, Algebra, Cyber Security, Trigonometry, Economics, Digital Arts
 
 92. B.Tech in Electronics and telecommunication Engineering
-sub:Mathematics ,Physics ,Chemistry ,English, Computer,Leadership ,Electronics and Hardware ,Logical and Reasoning,Coding 
+sub:Mathematics, Physics, Chemistry, English, Computer, Leadership, Electronics and Hardware, Logical & Reasoning, Coding 
 
 93. B.Tech in Environment Engineering
-sub:Chemistry,Mathematics ,Physics ,Biology ,Computer ,Geography,Environmental Science,Philosophy, Psychology,Gardening
+sub:Chemistry, Mathematics, Physics, Biology, Computer, Geography, Environmental Science, Philosophy, Psychology, Gardening
 
 94. B.Tech in Humanities and Social Science
-sub:Mathematics, English ,Computer, Economics, Sociology, Geography, History, Psychology, Leadership, Research Skills, Writing, Management, Political Science
+sub:Mathematics, English, Computer, Economics, Sociology, Geography, History, Psychology, Leadership, Research and Observation, Writing, Management, Political Science
 
 95. B.Tech in Information and Communication Technology
-sub:Mathematics ,Physics ,Chemistry ,English, Computer,Coding ,Web Design,Electronics and Hardware,Cyber Security,Statistics,Digital Arts 
+sub:Mathematics, Physics, Chemistry, English, Computer, Coding, Web Design, Electronics and Hardware, Cyber Security, Statistics, Digital Arts 
 
 96. B.Tech in Information Technology
-sub:Mathematics ,Physics ,Chemistry ,English, Computer,Coding ,Web Design,Electronics and Hardware,Cyber Security,Statistics,Digital Arts 
+sub:Mathematics, Physics, Chemistry, English, Computer, Coding, Web Design, Electronics and Hardware, Cyber Security, Statistics, Digital Arts 
 
 97. B.Tech in Instrumentation and control Engineering
-sub:Mathematics ,Physics ,Chemistry ,English, Computer,Coding ,Web Design,Electronics and Hardware,Cyber Security,Statistics,Digital Arts ,Computer Architecture ,Logical and Reasoning,Philosophy, Psychology 
+sub:Mathematics, Physics, Chemistry, English, Computer, Coding, Web Design, Electronics and Hardware, Cyber Security, Statistics, Digital Arts, Computer Architecture, Logical & Reasoning, Philosophy, Psychology 
 
 98. B.Tech in Science and Humanities
-sub:Mathematics ,Physics ,Chemistry ,English, Computer,Economics ,Political Science, Sociology, History,Business Administration ,Philosophy ,Psychology,Management,Leadership,Digital Arts
+sub:Mathematics, Physics, Chemistry, English, Computer, Economics, Political Science, Sociology, History, Business Administration, Philosophy, Psychology, Management, Leadership, Digital Arts
 
 99. B.Des  in Animation Film Design
-Sub:Mathematics,English,Computer,Fine Arts,Digital Arts,Travelling,Animation,Web Design,Computer Architecture,Coding,Trigonometry
+Sub:Mathematics, English, Computer, Fine Arts, Digital Arts, Travelling, Animation, Web Design, Computer Architecture, Coding,Trigonometry
 """
     lines = strup.split("\n")
     dict = {}
@@ -751,10 +751,23 @@ def reccourse(request):
         post_data = json.loads(request.body.decode("utf-8"))
         student = Student.objects.get(email=request.session["email"])
         student.recommended_course = post_data['courses']
+        print("Recommended courses recieved...")
+        student.save()
+        response = redirect("/result")
+        response.set_cookie("result_shown","true")
+    return response
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
+#For import and show  recommended courses from  result page to myprofile...
+def reccourse(request):
+    if request.method == "POST":
+        post_data = json.loads(request.body.decode("utf-8"))
+        student = Student.objects.get(email=request.session["email"])
+        student.recommended_course = post_data['courses']
         print (list(post_data['courses']))
         student.save()
     return HttpResponse("Nothing found...")
-#college recommend..
+#college  information...
 def get_college_info(recommended_courses):
     college_info = {}
     with connection.cursor() as cursor:
@@ -770,7 +783,7 @@ def get_college_info(recommended_courses):
                 college_info[course].append([clg.name,clg.address,fees,clg.hostel,clg.placement,clg.transport,clg.link])
     print(college_info)
     return college_info
-
+#For suggesting colleges according to the course recommended...
 def recommend_colleges(request):
     recommended_course = Student.objects.get(email=request.session["email"]).recommended_course
     courses_list = ast.literal_eval(recommended_course)

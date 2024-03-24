@@ -54,20 +54,20 @@
                         <td>
                             <h2 style="background: transparent; border-radius: 7px;">{{info}} {{score}}</h2>
                             <h2 style="background: transparent; border-radius: 7px;">Your Percentage: {{percentage}}%</h1>
-                            <h1 id="recommended-course" style="background: transparent; border-radius: 7px;-webkit-text-fill-color: red;"><b>Recommended Course:</b></h2> 
-                            <div style="display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: column;">
-                                {% for i in Courses %}
-                                    <h3 style="background: transparent; border-radius: 7px; ">{{i}}</h3>
-                                {% endfor %}    
-                            </div>
+                            <h1 style="-webkit-text-fill-color: red;"><b>Your Exam Score:</b></h2>
+                                {% for i in subjects.items %}
+                                    <h3 style="background: transparent; border-radius: 7px; ">{{i.0}} : {{i.1}}</h3>
+                                {% endfor %}
                         </td>
                     </tr>
                     <tr style="display: flex;flex-wrap: wrap;">
                         <td>
-                            <h1 style="-webkit-text-fill-color: red;"><b>Your Exam Score:</b></h2>
-                            {% for i in subjects.items %}
-                            <h3 style="background: transparent; border-radius: 7px; ">{{i.0}} : {{i.1}}</h3>
-                            {% endfor %}
+                            <h1 id="recommended-course" style="background: transparent; border-radius: 7px;-webkit-text-fill-color: red;"><b>Recommended Courses:</b></h1> 
+                                <div style="display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: column;">
+                                    {% for i in Courses %}
+                                        <h3 style="background: transparent; border-radius: 7px; ">{{i}}</h3>
+                                    {% endfor %}    
+                                </div>
                         </td>
                     </tr>
             </table>
