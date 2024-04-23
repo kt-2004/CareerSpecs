@@ -53,7 +53,7 @@ function recommendCourse(scores) {
                     return ['BCA', 'BA in Biology', 'BA in Communication', 'BA in Economics', 'BA in Education', 'BA in English', 'BA in History', 'BA in Journalism', 'BA in Philosophy', 'BA in Political Science', 'BA in Psychology', 'BA in Studio Art', 'BA in Theatre and Drama', 'BA in Music', 'BA LLB', 'Bachelor of Journalism & Mass Communication', 'BA in Humanities and Social Science', 'Diploma in Education', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Event Management', 'Diploma in Fashion, Textile and Apparel Design (Part Time)', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Hotel and Tourism Management', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'BDes in Fashion Designing', 'BDes in Interior Design', 'BDes in Communication Design', 'BDes in Industrial & Product Design'];
                 }
                 if (stream == 'commerce') {
-                    return ['BAF', 'Company Secretary', 'Cost and Management Accountant', 'Bachelor of Economics', 'BCOM', 'BBA', 'Bachelor of Business Management', 'Integrated MBA', 'BBA Hons. in Hospitality and Tourism Management', 'BSc IT', 'BCA'];
+                    return ['BAF', 'Company Secretary', 'Cost and Management Accountant', 'Bachelor of Economics', 'BCOM', 'BBA', 'Bachelor of Business Management', 'Integrated MBA', 'BBA Hons in Hospitality and Tourism Management', 'BSc IT', 'BCA'];
                 }
                 break;
             case 'Mathematics':

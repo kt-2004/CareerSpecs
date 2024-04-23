@@ -13,8 +13,8 @@
                 flex-wrap: wrap;
                 height: 80vh;
             }">
-                    <h1 style="-webkit-text-fill-color: black;font-weight:2em; padding-bottom:20px; text-align: center;font-family: 'Times New Roman', Times, serif;">-: CONTACT DETAILS :-</h1>
-                    <img src="{% static 'images/contact-wallpaper.jpg' %}" alt="contact-wallpaper" style="border-radius: 7px;box-shadow: 15px 15px 5px  rgb(43, 82, 93,.7);width:55vw;">
+                    <h1 style="-webkit-text-fill-color: black;font-weight:2em; padding-bottom:2px; text-align: center;font-family: 'Times New Roman', Times, serif;">-: CONTACT DETAILS :-</h1>
+                    <img src="{% static 'images/contact-wallpaper.jpg' %}" alt="contact-wallpaper" style="border-radius: 7px;box-shadow: 15px 15px 5px  rgb(43, 82, 93,.7);width:47vw; margin-bottom: 10vh;">
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -29,7 +29,7 @@
                                 <input type="email" required placeholder="Email Address" name="cEmail" style="background: transparent;border-bottom: 2px solid sienna; " pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
                             </div>
                             <div class="full field">
-                                <input type="numbers" required maxlength="10" minlength="10" placeholder="Phone Number" name="cPhone" style="background: transparent; border-bottom: 2px solid sienna;"  pattern="[789][0-9]{9}"  title="Only 10 Numeric Digits allowed"  />
+                                <input type="numbers" required maxlength="10" minlength="10" placeholder="Phone Number" name="cPhone" style="background: transparent; border-bottom: 2px solid sienna;"  pattern="[789][0-9]{9}"  title="Only 10 Numeric Digits allowed which must be start with 7,8 0r 9."  />
                             </div>
                             <div class="full field">
                                 <textarea id="feedback-textarea" placeholder="Message" style="background: transparent; border-bottom: 2px solid sienna;"></textarea>

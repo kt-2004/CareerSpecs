@@ -395,7 +395,7 @@
                 <input type="email" readonly name="email" required value="{{e_mail}}">
             </div>
             <div class="inputbox">
-                <input type="numbers" name="seat_no" required="required" pattern="G-[\d]{6}" title="Please enter a valid pattern like G-123456">
+                <input type="numbers" name="seat_no" required="required" pattern="G-[\d]{6}" title="Please enter a valid pattern like G-123456" maxlength="8" minlength="8">
                 <span>Seat no.</span>
             </div>
             <div class="item">
@@ -615,7 +615,7 @@
             var checkboxes = document.querySelectorAll('input[name="subject"]:checked');
             var selectedSubjects = document.querySelectorAll('#sub option:checked');
             if (selectedSubjects.length !== 3) {
-                alert('Please select exactly three interested subjects.');
+                alert('Please select exactly three subjects.');
                 return;
             } else {
                 disableOptions('#sub', selectedSubjects);
@@ -625,19 +625,19 @@
             var selectedSkills = document.querySelectorAll('#skills option:checked');
             if (selectedSkills.length !== 3) {
                 alert('Please select exactly three skills.');
-                return;
+                return false;
             } else {
                 disableOptions('#skills', selectedSkills);
             }
 
             if (!stream) {
                 alert('Please choose a stream.');
-                return;
+                return false;
             }
 
             if (checkboxes.length !== 3) {
                 alert('Please select exactly three subjects.');
-                return;
+                return false;
             }
 
             for (var i = 0; i < marksInputs.length; i++) {
@@ -645,7 +645,7 @@
                 if (!marksInput.value || isNaN(marksInput.value) || marksInput.value < 0 || marksInput.value > 100) {
                     alert('Please enter valid marks between 0 and 100.');
                     marksInput.focus();
-                    return;
+                    return false;
                 }
             }
 
