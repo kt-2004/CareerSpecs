@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="full float-right_img" style="text-align: center;display: flex;    text-align: center;
+                <div class="full float-right_img" style="text-align: center;display: flex;text-align: center;
                 display: flex;
                 flex-direction: column;
                 align-content: space-around;
@@ -23,7 +23,7 @@
                         {% csrf_token %}
                         <fieldset>
                             <div class="full field">
-                                <input type="text" required placeholder="Your Name" name="cName" style="background: transparent; border-bottom: 2px solid sienna;" />
+                                <input type="text" required placeholder="Your Name" name="cName" style="background: transparent; border-bottom: 2px solid sienna;" pattern="[a-z]" title="Only lowercase alphabets are allowed."/>
                             </div>
                             <div class="full field">
                                 <input type="email" required placeholder="Email Address" name="cEmail" style="background: transparent;border-bottom: 2px solid sienna; " pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />

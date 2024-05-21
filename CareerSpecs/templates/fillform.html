@@ -449,7 +449,6 @@
                     <option value="Outdoor Games">Outdoor Games</option>
                     <option value="Photography">Photography</option>
                     <option value="Painting">Painting</option>
-                    <option value="Photography">Photography</option> 
                     <option value="Reading">Reading</option>
                     <option value="Research and Observation">Research and Observation</option>
                     <option value="Travelling">Travelling</option>
@@ -479,13 +478,13 @@
                 </div>
                 <div id="marksForm" class="hidden">
                     <label id="marksLabel1" for="marks1"></label>
-                    <input type="number" name="marks1" id="marks1" required>
+                    <input type="number" name="marks1" id="marks1" required maxlength="3" minlength="2" min="33" max="100">
                     <br>
                     <label id="marksLabel2" for="marks2"></label>
-                    <input type="number" name="marks2" id="marks2" required>
+                    <input type="number" name="marks2" id="marks2" required maxlength="3" minlength="2" min="33" max="100">
                     <br>
                     <label id="marksLabel3" for="marks3"></label>
-                    <input type="number" name="marks3" id="marks3" required>
+                    <input type="number" name="marks3" id="marks3" required maxlength="3" minlength="2" min="33" max="100">
                 </div>
             </div>
             <div class="btn-block">
@@ -615,8 +614,8 @@
             var checkboxes = document.querySelectorAll('input[name="subject"]:checked');
             var selectedSubjects = document.querySelectorAll('#sub option:checked');
             if (selectedSubjects.length !== 3) {
-                alert('Please select exactly three subjects.');
-                return;
+                alert('Please select exactly three interested subjects.');
+                return false;
             } else {
                 disableOptions('#sub', selectedSubjects);
             }
@@ -645,7 +644,7 @@
                 if (!marksInput.value || isNaN(marksInput.value) || marksInput.value < 0 || marksInput.value > 100) {
                     alert('Please enter valid marks between 0 and 100.');
                     marksInput.focus();
-                    return false;
+                    return;
                 }
             }
 

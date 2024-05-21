@@ -42,7 +42,7 @@ function recommendCourse(scores) {
                     return ['BA LLB', 'BA in Communication', 'BA in Journalism', 'Bachelor of Journalism & Mass Communication', 'BCA'];
                 }
                 if (stream == 'commerce') {
-                    return ['BAF', 'BBA', 'Bachelor of Economics', 'BCOM', 'BBA Hons. in Hospitality and Tourism Management', 'BCA'];
+                    return ['BAF', 'BBA', 'Bachelor of Economics', 'BCOM', 'BBA Hons in Hospitality and Tourism Management', 'BCA'];
                 }
                 break;
             case 'English':
@@ -64,7 +64,7 @@ function recommendCourse(scores) {
                     return ['Bachelor of Economics', 'Media and Communication', 'BA in Economics', 'BA in Education', 'BA LLB', 'Diploma in Education', 'BSc IT', 'BCA'];
                 }
                 if (stream == 'commerce') {
-                    return ['BAF', 'Cost and Management Accountant', 'BCOM', 'Bachelor of Business Management', 'LLB', 'BSc IT', 'BCA']; // Change this based on your specific logic
+                    return ['BAF', 'Cost and Management Accountant', 'BCOM', 'Bachelor of Business Management', 'LLB', 'BSc IT', 'BCA'];
                 }
                 break;
             case 'Logical & Reasoning':
@@ -97,7 +97,7 @@ function recommendCourse(scores) {
                     return ['BSc IT', 'BCA'];
                 }
                 if (stream == 'commerce') {
-                    return ['BSc IT', 'BCA']; // Change this based on your specific logic
+                    return ['BSc IT', 'BCA'];
                 }
                 break;
             case 'Web Design':
@@ -108,7 +108,7 @@ function recommendCourse(scores) {
                     return ['Diploma in Broadcast graphics', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'B.Des. in Animation Film Design'];
                 }
                 if (stream == 'commerce') {
-                    return ['BSc IT', 'BCA', 'BBA']; // Change this based on your specific logic
+                    return ['BSc IT', 'BCA', 'BBA'];
                 }
                 break;
             case 'Computer Architecture':
@@ -141,7 +141,7 @@ function recommendCourse(scores) {
                     return ['B.Des in Animation Film Design', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Visual Effects', 'BCA', 'BSc IT'];
                 }
                 if (stream == 'commerce') {
-                    return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Visual Effects', 'B.Des in Animation Film Design']; // Change this based on your specific logic
+                    return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                 }
                 break;
             case 'Digital Arts':
@@ -152,7 +152,7 @@ function recommendCourse(scores) {
                     return ['Media and Communication', 'Mass and Communication', 'BA in Communication', 'BA in Education', 'BA in Studio Art', 'BA in Music', 'BDes in fashion Designing', 'BDes in Communication Design', 'BDes in Interior Design', 'BDes in Industrial & Product Design', 'Diploma in Education', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Fashion, Textile and Apparel Design (Part Time)', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                 }
                 if (stream == 'commerce') {
-                    return ['Bachelor of Business Management', 'BCA', 'B.Des in Animation Film Design']; // Change this based on your specific logic
+                    return ['Bachelor of Business Management', 'BCA', 'B.Des in Animation Film Design'];
                 }
                 break;
             case 'Leadership':
@@ -163,7 +163,7 @@ function recommendCourse(scores) {
                     return ['BA in Communication', 'BA in Education', 'BA in History', 'BA in Journalism', 'BA in Philosophy', 'BA in Political Science', 'BA in Psychology', 'BA in Theatre and Drama', 'Bachelor of Journalism & Mass Communication', 'BA LLB', 'Diploma in Education', 'BBA Hons in Hospitality and Tourism Management', 'Diploma in Aviation Management', 'Diploma in Event Management', 'Diploma in Hotel and Tourism Management'];
                 }
                 if (stream == 'commerce') {
-                    return ['BAF', 'BCA', 'Company Secretary', 'Cost and Management Accountant', 'Bachelor of Economics', 'BCOM', 'BBA', 'Bachelor of Business Management', 'Integrated MBA', 'LLB', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Diploma in Event Management', 'Diploma in Hotel and Tourism Management']; // Change this based on your specific logic
+                    return ['BAF', 'BCA', 'Company Secretary', 'Cost and Management Accountant', 'Bachelor of Economics', 'BCOM', 'BBA', 'Bachelor of Business Management', 'Integrated MBA', 'LLB', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Diploma in Event Management', 'Diploma in Hotel and Tourism Management'];
                 }
                 break;
             case 'Research and Obervation':
@@ -174,7 +174,7 @@ function recommendCourse(scores) {
                     return ['BA in Communication', 'BA in Education', 'BA in History', 'BA in Journalism', 'BA in Political Science', 'BA in Psychology', 'BDes in Communication Design', 'BDes in Industrial & Product Design', 'Diploma in Education'];
                 }
                 if (stream == 'commerce') {
-                    return ['BDes in Communication Design', 'BDes in Industrial & Product Design', 'Bachelor of Economics', 'BBA', 'Integrated MBA', 'BSc IT', 'BCA']; // Change this based on your specific logic
+                    return ['BDes in Communication Design', 'BDes in Industrial & Product Design', 'Bachelor of Economics', 'BBA', 'Integrated MBA', 'BSc IT', 'BCA'];
                 }
                 break;
             case 'Robotics & ML/AI':
@@ -185,7 +185,7 @@ function recommendCourse(scores) {
                     return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration'];
                 }
                 if (stream == 'commerce') {
-                    return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration']; // Change this based on your specific logic
+                    return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration'];
                 }
                 break;
             case 'Animation':
@@ -196,7 +196,7 @@ function recommendCourse(scores) {
                     return ['BCA', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Mass and Communication in Film', 'BA in Journalism', 'BDes in Interior Design', 'Bachelor of Journalism & Mass Communication', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Game Design And Integration', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                 }
                 if (stream == 'commerce') {
-                    return ['BCA', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Mass and Communication in Film', 'BDes in Interior Design', 'Bachelor of Journalism & Mass Communication', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Game Design And Integration', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design']; // Change this based on your specific logic
+                    return ['BCA', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Mass and Communication in Film', 'BDes in Interior Design', 'Bachelor of Journalism & Mass Communication', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Game Design And Integration', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                 }
                 break;
             case 'Accounts':
@@ -607,7 +607,7 @@ function recommendCourse(scores) {
                 break;
             case 'Fine Arts':
                 if (stream == 'science') {
-                    return ['B.Tech in Aeronautical Engineering', ];
+                    return ['B.Tech in Aeronautical Engineering'];
                 }
                 if (stream == 'arts') {
                     return ['Mass and Communication', 'Mass and Communication in Film', 'BA in Studio Art', 'BA in Theatre and Drama', 'BA in Music', 'BDes in Fashion Designing', 'BDes in Interior Design', 'BDes in Communication Design', 'BDes in Industrial & Product Design', 'BBA Hons in Hospitality and Tourism Management', 'Diploma in Broadcast Graphics', 'Diploma in Event Management', 'Diploma in Fashion', 'Textile and Apparel Design (Part Time)', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
@@ -667,7 +667,7 @@ function recommendCourse(scores) {
                         return ['BA LLB', 'BA in Communication', 'BA in Journalism', 'Bachelor of Journalism & Mass Communication', 'BCA'];
                     }
                     if (stream == 'commerce') {
-                        return ['BAF', 'BBA', 'Bachelor of Economics', 'BCOM', 'BBA Hons. in Hospitality and Tourism Management', 'BCA'];
+                        return ['BAF', 'BBA', 'Bachelor of Economics', 'BCOM', 'BBA Hons in Hospitality and Tourism Management', 'BCA'];
                     }
                     break;
                 case 'English':
@@ -680,7 +680,7 @@ function recommendCourse(scores) {
                     if (stream == 'commerce') {
                         return ['BAF', 'Company Secretary', 'Cost and Management Accountant', 'Bachelor of Economics', 'BCOM', 'BBA', 'Bachelor of Business Management', 'Integrated MBA', 'BBA Hons. in Hospitality and Tourism Management', 'BSc IT', 'BCA'];
                     }
-                    break; // Change this based on your specific logic
+                    break;
                 case 'Mathematics':
                     if (stream === 'Science') {
                         return ['BSc IT', 'BCA', 'BSc in Biology', 'BSc in Microbiology', 'BSc in Zoology', 'BSc in Medical Technology', 'BSc in Biotechnology', 'BSc in Botany', 'BSc in Genetics', 'BSc in Agrochemical Science', 'BSc in Dairy Farming', 'BSc in Dairy Technology', 'BSc in Audiology', 'BSc in Agriculture', 'B.Tech in Mechanical Engineering', 'B.Tech in Electrical Engineering', 'B.Tech in Civil Engineering', 'B.Tech in Chemical Engineering', 'B.Tech in Electronics and Communication Engineering', 'B.Tech in Electronics and Communication', 'B.Tech in Electronics and Instrumentation Engineering', 'B.Tech in Aeronautical Engineering', 'B.Tech in Automobile Engineering', 'B.Tech in Computer Engineering', 'B.Tech in Electronics and Telecommunication Engineering', 'B.Tech in Environment Engineering', 'B.Tech in Information and Communication Technology', 'B.Tech in Information Technology', 'B.Tech in Instrumentation and Control Engineering', 'B.Tech in Science and Humanities', 'B.Des. in Animation Film Design'];
@@ -689,7 +689,7 @@ function recommendCourse(scores) {
                         return ['Bachelor of Economics', 'Media and Communication', 'BA in Economics', 'BA in Education', 'BA LLB', 'Diploma in Education', 'BSc IT', 'BCA'];
                     }
                     if (stream == 'commerce') {
-                        return ['BAF', 'Cost and Management Accountant', 'BCOM', 'Bachelor of Business Management', 'LLB', 'BSc IT', 'BCA']; // Change this based on your specific logic
+                        return ['BAF', 'Cost and Management Accountant', 'BCOM', 'Bachelor of Business Management', 'LLB', 'BSc IT', 'BCA'];
                     }
                     break;
                 case 'Logical & Reasoning':
@@ -700,8 +700,8 @@ function recommendCourse(scores) {
                         return ['BA in Economics', 'BA in History', 'BA in Journalism', 'BA in Philosophy', 'BA in Political Science', 'BA in Biology', 'Bachelors of Journalism & Mass Communication', 'BA LLB', 'Diploma in Journalism and Mass Communication', 'Diploma in Game Design and Integration', 'Diploma in Nutrition and Dietetics', 'BSc IT', 'BCA'];
                     }
                     if (stream == 'commerce') {
-                        return ['BCOM', 'BBA', 'Integrated MBA', 'BSc IT', 'BCA']; // Change this based on your specific logic
-                    } // Change this based on your specific logic
+                        return ['BCOM', 'BBA', 'Integrated MBA', 'BSc IT', 'BCA'];
+                    }
                     break;
                 case 'Statistics':
                     if (stream == 'science') {
@@ -711,19 +711,18 @@ function recommendCourse(scores) {
                         return ['BA in Psychology'];
                     }
                     if (stream == 'commerce') {
-                        return ['B.Com', 'BAF', 'Bachelor of Business Management']; // Change this based on your specific logic
+                        return ['B.Com', 'BAF', 'Bachelor of Business Management'];
                     }
                     break;
                 case 'Ethical hacking':
                     if (stream == 'science') {
                         return ['BSc IT', 'B.Tech in Computer Science and Engineering', 'B.Tech in Information and Communication Technology', 'B.Tech in Information Technology', 'BCA', 'B.Tech in Aeronautical Engineering', 'B.Tech in Computer Engineering'];
-
                     }
                     if (stream == 'arts') {
                         return ['BSc IT', 'BCA'];
                     }
                     if (stream == 'commerce') {
-                        return ['BSc IT', 'BCA']; // Change this based on your specific logic
+                        return ['BSc IT', 'BCA'];
                     }
                     break;
                 case 'Web Design':
@@ -734,7 +733,7 @@ function recommendCourse(scores) {
                         return ['Diploma in Broadcast graphics', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'B.Des. in Animation Film Design'];
                     }
                     if (stream == 'commerce') {
-                        return ['BSc IT', 'BCA', 'BBA']; // Change this based on your specific logic
+                        return ['BSc IT', 'BCA', 'BBA'];
                     }
                     break;
                 case 'Computer Architecture':
@@ -745,7 +744,7 @@ function recommendCourse(scores) {
                         return ['Diploma in Game Design And Integration', 'Diploma in Visual Effects', 'B.Des. in Animation Film Design', 'BCA', 'BSc IT'];
                     }
                     if (stream == 'commerce') {
-                        return ['Diploma in Game Design And Integration', 'Diploma in Visual Effects', 'B.Des. in Animation Film Design', 'BCA', 'BSc IT']; // Change this based on your specific logic
+                        return ['Diploma in Game Design And Integration', 'Diploma in Visual Effects', 'B.Des. in Animation Film Design', 'BCA', 'BSc IT'];
                     }
                     break;
                 case 'Cyber Security':
@@ -756,7 +755,7 @@ function recommendCourse(scores) {
                         return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design'];
                     }
                     if (stream == 'commerce') {
-                        return ['BCA', 'BSc IT']; // Change this based on your specific logic
+                        return ['BCA', 'BSc IT'];
                     }
                     break;
                 case 'Coding':
@@ -767,7 +766,7 @@ function recommendCourse(scores) {
                         return ['B.Des in Animation Film Design', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Visual Effects', 'BCA', 'BSc IT'];
                     }
                     if (stream == 'commerce') {
-                        return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Visual Effects', 'B.Des in Animation Film Design']; // Change this based on your specific logic
+                        return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                     }
                     break;
                 case 'Digital Arts':
@@ -778,7 +777,7 @@ function recommendCourse(scores) {
                         return ['Media and Communication', 'Mass and Communication', 'BA in Communication', 'BA in Education', 'BA in Studio Art', 'BA in Music', 'BDes in fashion Designing', 'BDes in Communication Design', 'BDes in Interior Design', 'BDes in Industrial & Product Design', 'Diploma in Education', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Fashion, Textile and Apparel Design (Part Time)', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Game Design And Integration', 'Diploma in Graphic, Web and Multimedia Design', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                     }
                     if (stream == 'commerce') {
-                        return ['Bachelor of Business Management', 'BCA', 'B.Des in Animation Film Design']; // Change this based on your specific logic
+                        return ['Bachelor of Business Management', 'BCA', 'B.Des in Animation Film Design'];
                     }
                     break;
                 case 'Leadership':
@@ -789,7 +788,7 @@ function recommendCourse(scores) {
                         return ['BA in Communication', 'BA in Education', 'BA in History', 'BA in Journalism', 'BA in Philosophy', 'BA in Political Science', 'BA in Psychology', 'BA in Theatre and Drama', 'Bachelor of Journalism & Mass Communication', 'BA LLB', 'Diploma in Education', 'BBA Hons in Hospitality and Tourism Management', 'Diploma in Aviation Management', 'Diploma in Event Management', 'Diploma in Hotel and Tourism Management'];
                     }
                     if (stream == 'commerce') {
-                        return ['BAF', 'BCA', 'Company Secretary', 'Cost and Management Accountant', 'Bachelor of Economics', 'BCOM', 'BBA', 'Bachelor of Business Management', 'Integrated MBA', 'LLB', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Diploma in Event Management', 'Diploma in Hotel and Tourism Management']; // Change this based on your specific logic
+                        return ['BAF', 'BCA', 'Company Secretary', 'Cost and Management Accountant', 'Bachelor of Economics', 'BCOM', 'BBA', 'Bachelor of Business Management', 'Integrated MBA', 'LLB', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Diploma in Event Management', 'Diploma in Hotel and Tourism Management'];
                     }
 
                 case 'Research and Obervation':
@@ -800,7 +799,7 @@ function recommendCourse(scores) {
                         return ['BA in Communication', 'BA in Education', 'BA in History', 'BA in Journalism', 'BA in Political Science', 'BA in Psychology', 'BDes in Communication Design', 'BDes in Industrial & Product Design', 'Diploma in Education'];
                     }
                     if (stream == 'commerce') {
-                        return ['BDes in Communication Design', 'BDes in Industrial & Product Design', 'Bachelor of Economics', 'BBA', 'Integrated MBA', 'BSc IT', 'BCA']; // Change this based on your specific logic
+                        return ['BDes in Communication Design', 'BDes in Industrial & Product Design', 'Bachelor of Economics', 'BBA', 'Integrated MBA', 'BSc IT', 'BCA'];
                     }
                     break;
                 case 'Robotics & ML/AI':
@@ -811,7 +810,7 @@ function recommendCourse(scores) {
                         return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration'];
                     }
                     if (stream == 'commerce') {
-                        return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration']; // Change this based on your specific logic
+                        return ['BCA', 'BSc IT', 'Diploma in Game Design And Integration'];
                     }
                     break;
                 case 'Animation':
@@ -822,7 +821,7 @@ function recommendCourse(scores) {
                         return ['BCA', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Mass and Communication in Film', 'BA in Journalism', 'BDes in Interior Design', 'Bachelor of Journalism & Mass Communication', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Game Design And Integration', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                     }
                     if (stream == 'commerce') {
-                        return ['BCA', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Mass and Communication in Film', 'BDes in Interior Design', 'Bachelor of Journalism & Mass Communication', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Game Design And Integration', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design']; // Change this based on your specific logic
+                        return ['BCA', 'BSc IT', 'Media and Communication', 'Mass and Communication', 'Mass and Communication in Film', 'BDes in Interior Design', 'Bachelor of Journalism & Mass Communication', 'Diploma in 3D Animation', 'Advanced Diploma in Animation', 'Diploma in Broadcast Graphics', 'Diploma in Game Design And Integration', 'Diploma in Photography and VFX (Part Time)', 'Diploma in Photography, Videography & Cinematography', 'Diploma in Visual Effects', 'B.Des in Animation Film Design'];
                     }
                     break;
                 case 'Accounts':

@@ -140,7 +140,7 @@ def logout(request):
     request.session['username'] = None
     request.session['email'] = None
     if 'questions' in list(request.session.keys()):
-        del request.session['questions'] # if you cmmt this line then only you'll be able to logout.
+        del request.session['questions'] 
     request.session.modified = True
     return response
 #Register and Login function are combined here using User model for both.
@@ -774,7 +774,7 @@ def get_college_info(recommended_courses):
         for course in recommended_courses[0]:
             print(course)
             cursor.execute(f"SELECT college_name_id,fees FROM csweb_stream WHERE name='{course}'")
-            t1 = list(cursor.fetchall())    #fetch all ques from user selected int.subs.
+            t1 = list(cursor.fetchall())    #fetch all clg...
             for i in t1:
                 if course not in college_info.keys():
                     college_info[course] = []
