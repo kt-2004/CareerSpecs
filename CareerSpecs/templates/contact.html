@@ -23,7 +23,7 @@
                         {% csrf_token %}
                         <fieldset>
                             <div class="full field">
-                                <input type="text" required placeholder="Your Name" name="cName" style="background: transparent; border-bottom: 2px solid sienna;" pattern="[a-z]" title="Only lowercase alphabets are allowed."/>
+                                <input type="text" required placeholder="Your Name" name="cName" style="background: transparent; border-bottom: 2px solid sienna;" pattern="[a-z]+" title="Only lowercase alphabets are allowed." maxlength="20"/>
                             </div>
                             <div class="full field">
                                 <input type="email" required placeholder="Email Address" name="cEmail" style="background: transparent;border-bottom: 2px solid sienna; " pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
